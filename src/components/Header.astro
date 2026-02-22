@@ -1,0 +1,24 @@
+---
+const nav = [
+  { href: "/", label: "Inicio" },
+  { href: "/enfoque", label: "Enfoque" },
+  { href: "/ambitos", label: "Ámbitos" },
+  { href: "/confidencialidad", label: "Confidencialidad" },
+  { href: "/contacto", label: "Contacto" },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Critical API Services">
+      <span class="brand-mark diamond"></span>
+      <span class="brand-text">Critical API Services</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      {nav.map((item) => (
+        <a class="nav-link" href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

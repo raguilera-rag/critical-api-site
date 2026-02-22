@@ -1,0 +1,66 @@
+---
+/**
+ * HeroSplit.astro
+ * Hero principal del Home, con estilo sobrio/minimalista.
+ * - Kicker: línea doctrinal (no marketing)
+ * - Title: admite saltos de línea usando \n
+ * - Lead: párrafo de soporte (controlado)
+ */
+
+interface Props {
+  kicker?: string;
+  title?: string;
+  lead?: string;
+  primaryHref?: string;
+  primaryLabel?: string; // (opcional) si no lo pasas, no se muestra
+  secondaryHref?: string;
+  secondaryLabel?: string; // (opcional) si no lo pasas, no se muestra
+}
+
+const {
+  kicker = "Infraestructura crítica - Gobernanza técnica",
+  title = "Arquitectura de decisión técnica\nen entornos de alta criticidad",
+  lead = "Intervención estratégica en contextos complejos donde la continuidad operacional, el riesgo y los criterios de gobernanza definen la estabilidad institucional.",
+  primaryHref = "/contacto",
+  primaryLabel = "Contacto institucional",
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props as Props;
+
+const titleLines = String(title).split("\n").filter(Boolean);
+---
+
+<section class="container hero">
+  <div class="hero__text">
+    <div class="kicker">{kicker}</div>
+
+    <h1 class="hero__title">
+      {titleLines.map((line, i) => (
+        <span class={i === 0 ? "t1" : "t2"}>{line}</span>
+      ))}
+    </h1>
+
+    <p class="hero__lead">{lead}</p>
+
+    <div class="hero__actions">
+      {primaryLabel && (
+        <a class="btn btn--ghost" href={primaryHref}>
+          {primaryLabel} <span class="arrow">→</span>
+        </a>
+      )}
+
+      {secondaryHref && secondaryLabel && (
+        <a class="btn btn--ghost" href={secondaryHref}>
+          {secondaryLabel} <span class="arrow">→</span>
+        </a>
+      )}
+    </div>
+  </div>
+
+  <div class="hero__media" aria-hidden="true">
+    <div class="abstractCard">
+      <div class="abstractGlow"></div>
+      <div class="abstractLines"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+const {
+  title,
+  body,
+  imageSrc = "/section.jpg",
+  imageAlt = "",
+  reverse = false,
+  href,
+  linkLabel = "Conocer más",
+} = Astro.props;
+---
+<section class="container split">
+  <div class={"split__grid" + (reverse ? " split__grid--reverse" : "")}>
+    <div class="split__text">
+      <h2 class="h2">{title}</h2>
+      <p class="p">{body}</p>
+      {href && (
+        <a class="link" href={href}>{linkLabel} <span class="arrow">→</span></a>
+      )}
+    </div>
+    <div class="split__media">
+      <div class="mediaCard">
+        <img src={imageSrc} alt={imageAlt} loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

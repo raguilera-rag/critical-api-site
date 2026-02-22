@@ -1,17 +1,48 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSplit from "../components/HeroSplit.astro";
+import SectionSplit from "../components/SectionSplit.astro";
+import CardsGrid from "../components/CardsGrid.astro";
+import CTA from "../components/CTA.astro";
 
+const cards = [
+  {
+    title: "Enfoque de intervención",
+    body: "Criterio, gobernanza y continuidad operacional, con mínima exposición y claridad en decisiones.",
+    href: "/enfoque",
+  },
+  {
+    title: "Ámbitos de intervención",
+    body: "Plataformas críticas, mensajería, integración, alta disponibilidad y entornos con trazabilidad.",
+    href: "/ambitos",
+  },
+  {
+    title: "Principios de confidencialidad",
+    body: "Reserva por diseño, segregación y trazabilidad: solicitar y compartir solo lo mínimo necesario.",
+    href: "/confidencialidad",
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Critical API Services">
+  <HeroSplit />
+
+  <SectionSplit
+    title="Marco de decisión y continuidad operacional"
+    body="Definición estructurada de criterios técnicos, evaluación de escenarios y soporte estratégico en sistemas donde la interrupción no es una opción."
+    href="/enfoque"
+    linkLabel="Ver enfoque"
+  />
+
+  <SectionSplit
+    title="Riesgo estructural y resiliencia institucional"
+body="Análisis de dependencias, umbrales críticos y arquitectura de escenarios. Entregables acotados, trazables y consistentes con marcos regulatorios y operacionales."
+    reverse={true}
+    href="/ambitos"
+    linkLabel="Ver ámbitos"
+  />
+
+  <CardsGrid items={cards} />
+
+  <CTA />
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+const {
+  title = "Contacto profesional",
+  body = "Disponible exclusivamente para contextos profesionales específicos.",
+  href = "/contacto",
+  label = "Ir a contacto",
+} = Astro.props;
+---
+<section class="container cta">
+  <div class="cta__box">
+    <div>
+      <h2 class="h2">{title}</h2>
+      <p class="p muted">{body}</p>
+    </div>
+    <a class="btn btn--primary" href={href}>{label}</a>
+  </div>
+</section>

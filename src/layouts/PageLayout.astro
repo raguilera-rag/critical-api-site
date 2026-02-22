@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { title = "Critical API Services", heading = "", lead = "" } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <main class="page">
+    <section class="page__inner">
+      <header class="page__header">
+        <h1 class="page__title">{heading}</h1>
+        {lead && <p class="page__lead">{lead}</p>}
+      </header>
+
+      <div class="page__content">
+        <slot />
+      </div>
+
+      <div class="page__back">
+        <a class="link" href="/">← Volver</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

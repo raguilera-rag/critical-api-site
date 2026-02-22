@@ -1,0 +1,24 @@
+---
+interface CardItem {
+  title: string;
+  body: string;
+  href?: string;
+}
+
+const props = Astro.props as Partial<{ items: CardItem[] }>;
+const items: CardItem[] = Array.isArray(props.items) ? props.items : [];
+---
+
+<section class="container cards">
+  <div class="cards__grid">
+    {items.map((it) => (
+      <a class="card2" href={it.href ?? "#"}>
+        <div class="card2__head">
+          <h3>{it.title}</h3>
+          <span class="arrow">→</span>
+        </div>
+        <p>{it.body}</p>
+      </a>
+    ))}
+  </div>
+</section>
