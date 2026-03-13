@@ -10,18 +10,34 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
 
-    <title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Canonical SEO -->
-    <link rel="canonical" href={canonicalURL} />
-    <!-- Google verification -->
-    <meta name="google-site-verification" content="uQNbkcu9pju9tE1nIeb4n9UgSG_4vnPP6JXvdWgqPEU" />
+<title>{title}</title>
 
-    <script type="application/ld+json">
+<!-- SEO description -->
+<meta name="description" content="Consultoría técnica especializada en arquitectura de decisión, continuidad operativa y gobernanza en infraestructuras críticas." />
+
+<!-- Robots -->
+<meta name="robots" content="index, follow" />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Critical API Services" />
+<meta property="og:description" content="Arquitectura de decisión técnica y gobernanza en infraestructuras críticas." />
+<meta property="og:url" content="https://criticalapiservices.com" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://criticalapiservices.com/favicon.svg" />
+
+<!-- Google verification -->
+<meta name="google-site-verification" content="uQNbkcu9pju9tE1nIeb4n9UgSG_4vnPP6JXvdWgqPEU" />
+
+<!-- Structured Data -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -37,19 +53,20 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 }
 </script>
 
-  </head>
+</head>
 
-  <body>
-    <Header />
+<body>
 
-    <main>
-      <slot />
-    </main>
+<Header />
 
-    <Footer />
+<main>
+<slot />
+</main>
 
-    <!-- Scraper trap -->
+<Footer />
+
+<!-- Scraper trap -->
 <a href="/bot-trap" style="display:none;">bot-trap</a>
 
-  </body>
+</body>
 </html>
