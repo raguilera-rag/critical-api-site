@@ -5,5 +5,5 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://criticalapiservices.com',
-  integrations: [sitemap()]
+  integrations: [sitemap({})]
 });
