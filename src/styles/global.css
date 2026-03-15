@@ -777,3 +777,13 @@ a{color:inherit}
   max-width: 480px;
   line-height: 1.4;
 }
+
+.mediaGlow{
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(80,120,255,0.35), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    #0b1324;
+}

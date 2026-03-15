@@ -2,8 +2,6 @@
 const {
   title,
   body,
-  imageSrc = "/section.jpg",
-  imageAlt = "",
   reverse = false,
   href,
   linkLabel = "Conocer más",
@@ -19,9 +17,9 @@ const {
       )}
     </div>
     <div class="split__media">
-      <div class="mediaCard">
-        <img src={imageSrc} alt={imageAlt} loading="lazy" />
-      </div>
-    </div>
+  <div class="mediaCard">
+    <div class="mediaGlow" aria-hidden="true"></div>
+  </div>
+</div>
   </div>
 </section>
