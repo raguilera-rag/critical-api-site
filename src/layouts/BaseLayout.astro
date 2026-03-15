@@ -17,6 +17,26 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 
 <title>{title}</title>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Critical API Services",
+  "url": "https://criticalapiservices.com",
+  "logo": "https://criticalapiservices.com/favicon.svg",
+  "description": "Intervención estratégica en infraestructura crítica, gobernanza técnica y continuidad operacional en entornos de alta criticidad."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Critical API Services",
+  "url": "https://criticalapiservices.com"
+}
+</script>
+
 <!-- SEO description -->
 <meta name="description" content="Consultoría técnica especializada en arquitectura de decisión, continuidad operativa y gobernanza en infraestructuras críticas." />
 
