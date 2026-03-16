@@ -1217,3 +1217,25 @@ left:35px;
 }
 
 }
+
+/* ajuste visual para móvil */
+
+@media (max-width:640px){
+
+.abstractGlow{
+opacity:.35;
+filter:blur(10px);
+}
+
+.abstractCard{
+height:360px;
+background:
+linear-gradient(
+180deg,
+rgba(255,255,255,.06),
+rgba(255,255,255,.02)
+);
+
+}
+
+}
