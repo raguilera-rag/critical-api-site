@@ -90,5 +90,24 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 <a href="/bot-trap" style="display:none;">bot-trap</a>
 
 <!-- CAS-origin-marker: criticalapiservices.com | RaA-2026-site -->
+
+<script>
+document.addEventListener("mousemove", (e) => {
+  const cards = document.querySelectorAll(".mediaCard");
+
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
+    }
+  });
+});
+</script>
+
 </body>
 </html>
