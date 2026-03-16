@@ -647,6 +647,16 @@ a{color:inherit}
 
 }
 
+.hero__media:hover .panel-text{
+
+  opacity:.12;
+
+  filter:blur(.1px);
+
+  transform:scale(.96);
+
+}
+
 .abstractGlow{
   position: absolute;
 
