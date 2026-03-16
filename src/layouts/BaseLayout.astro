@@ -92,21 +92,37 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 <!-- CAS-origin-marker: criticalapiservices.com | RaA-2026-site -->
 
 <script>
+let mx = 70;
+let my = 30;
+let tx = 70;
+let ty = 30;
+
 document.addEventListener("mousemove", (e) => {
   const cards = document.querySelectorAll<HTMLElement>(".mediaCard");
 
   cards.forEach(card => {
     const rect = card.getBoundingClientRect();
 
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    if (x >= 0 && x <= 100 && y >= 0 && y <= 100) {
-      card.style.setProperty("--mx", x + "%");
-      card.style.setProperty("--my", y + "%");
-    }
+    tx = ((e.clientX - rect.left) / rect.width) * 100;
+    ty = ((e.clientY - rect.top) / rect.height) * 100;
   });
 });
+
+function animateGlow(){
+  mx += (tx - mx) * 0.08;
+  my += (ty - my) * 0.08;
+
+  const cards = document.querySelectorAll<HTMLElement>(".mediaCard");
+
+  cards.forEach(card=>{
+    card.style.setProperty("--mx", mx + "%");
+    card.style.setProperty("--my", my + "%");
+  });
+
+  requestAnimationFrame(animateGlow);
+}
+
+animateGlow();
 </script>
 
 </body>
