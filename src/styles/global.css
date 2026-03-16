@@ -679,14 +679,30 @@ a{color:inherit}
 .arch-lines line{
   stroke:rgba(120,160,255,.35);
   stroke-width:1;
+
+  stroke-dasharray:6 6;
+  animation: flow 8s linear infinite;
+}
+
+@keyframes flow{
+
+  from{
+    stroke-dashoffset:0;
+  }
+
+  to{
+    stroke-dashoffset:-120;
+  }
+
 }
 
 .arch-nodes circle{
-  fill:rgba(120,160,255,.9);
-}
+  fill: rgba(120,160,255,.9);
 
-.arch-nodes circle{
-  animation:nodePulse 3s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+
+  animation: nodePulse 3s ease-in-out infinite;
 }
 
 .arch-nodes circle:nth-child(2){ animation-delay:.4s; }
@@ -696,18 +712,18 @@ a{color:inherit}
 @keyframes nodePulse{
 
   0%{
-    r:4;
-    opacity:.8;
+    transform: scale(1);
+    opacity:.7;
   }
 
   50%{
-    r:6;
+    transform: scale(1.6);
     opacity:1;
   }
 
   100%{
-    r:4;
-    opacity:.8;
+    transform: scale(1);
+    opacity:.7;
   }
 
 }
