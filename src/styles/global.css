@@ -764,6 +764,22 @@ drop-shadow(0 0 6px rgba(120,160,255,.3));
 
 }
 
+@keyframes nodeActive{
+
+0%{
+transform:scale(1);
+filter:drop-shadow(0 0 4px rgba(120,160,255,.6));
+}
+
+100%{
+transform:scale(1.35);
+filter:
+drop-shadow(0 0 10px rgba(160,200,255,1))
+drop-shadow(0 0 22px rgba(120,160,255,.9));
+}
+
+}
+
 .arch-nodes circle{
 
   fill: #cfe2ff;
@@ -775,7 +791,7 @@ drop-shadow(0 0 6px rgba(120,160,255,.3));
   transform-origin:center;
   transform-box:fill-box;
 
-  animation: nodePulse 3s ease-in-out infinite;
+  animation:none;
 
 }
 
@@ -812,6 +828,7 @@ animation: nodePulse 3s ease-in-out infinite, nodeFlow 4s linear infinite;
 /* iluminación de nodo asociado */
 
 .hero_media:hover .arch-nodes circle:nth-child(1){
+  animation: nodeActive .6s ease forwards;
   animation-delay:.1s;
   fill:#ffffff;
 
@@ -824,6 +841,7 @@ animation: nodePulse 3s ease-in-out infinite, nodeFlow 4s linear infinite;
 }
 
 .hero_media:hover .arch-nodes circle:nth-child(2){
+  animation: nodeActive .6s ease forwards;
   animation-delay:.4s;
   fill:#ffffff;
 
@@ -836,6 +854,7 @@ animation: nodePulse 3s ease-in-out infinite, nodeFlow 4s linear infinite;
 }
 
 .hero_media:hover .arch-nodes circle:nth-child(3){
+  animation: nodeActive .6s ease forwards;
   animation-delay:.8s;
   fill:#ffffff;
 
@@ -848,6 +867,7 @@ animation: nodePulse 3s ease-in-out infinite, nodeFlow 4s linear infinite;
 }
 
 .hero_media:hover .arch-nodes circle:nth-child(4){
+  animation: nodeActive .6s ease forwards;
   animation-delay:.1.2s;
   fill:#ffffff;
 
