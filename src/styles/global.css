@@ -708,7 +708,9 @@ a{color:inherit}
 
   stroke-dasharray:6 6;
 
-  animation: flow 8s linear infinite;
+  animation:
+  flow 8s linear infinite,
+  networkPulse 6s ease-in-out infinite;
 
 }
 
@@ -721,6 +723,22 @@ a{color:inherit}
   to{
     stroke-dashoffset:-120;
   }
+
+}
+
+@keyframes networkPulse{
+
+0%{
+stroke: rgba(120,160,255,.35);
+}
+
+50%{
+stroke: rgba(180,210,255,.75);
+}
+
+100%{
+stroke: rgba(120,160,255,.35);
+}
 
 }
 
@@ -826,7 +844,7 @@ a{color:inherit}
 
   position:absolute;
   top:70px;
-  left:130px;
+  left:150px;
 
 }
 
@@ -834,7 +852,7 @@ a{color:inherit}
 
   position:absolute;
   top:120px;
-  left:130px;
+  left:150px;
 
 }
 
@@ -842,7 +860,7 @@ a{color:inherit}
 
   position:absolute;
   top:185px;
-  left:130px;
+  left:150px;
 
 }
 
@@ -850,7 +868,7 @@ a{color:inherit}
 
   position:absolute;
   top:260px;
-  left:130px;
+  left:150px;
 
 }
 
