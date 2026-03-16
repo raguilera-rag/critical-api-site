@@ -74,7 +74,7 @@ const titleLines = String(title).split("\n").filter(Boolean);
   <div class="abstractLines"></div>
 
   <!-- Red abstracta de arquitectura -->
-  <svg class="arch-diagram" viewBox="0 0 400 400" aria-hidden="true">
+  <svg class="arch-diagram" viewBox="0 0 400 400" aria-hidden="true" id="arch-diagram"></svg>
 
     <g class="arch-lines">
 
@@ -114,6 +114,7 @@ const titleLines = String(title).split("\n").filter(Boolean);
 <script>
 
 const card = document.querySelector(".abstractCard");
+const diagram = document.querySelector("#arch-diagram");
 
 if (card instanceof HTMLElement) {
 
@@ -124,8 +125,28 @@ if (card instanceof HTMLElement) {
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
 
+    /* glow dinámico */
     card.style.setProperty("--mx", x + "%");
     card.style.setProperty("--my", y + "%");
+
+    /* movimiento de topología */
+    if (diagram instanceof SVGElement) {
+
+      const offsetX = ((e.clientX - rect.left) / rect.width) - 0.5;
+      const offsetY = ((e.clientY - rect.top) / rect.height) - 0.5;
+
+      diagram.style.transform =
+        `translate(${offsetX * 10}px, ${offsetY * 10}px)`;
+
+    }
+
+  });
+
+  card.addEventListener("mouseleave", () => {
+
+    if (diagram instanceof SVGElement) {
+      diagram.style.transform = "translate(0px,0px)";
+    }
 
   });
 
