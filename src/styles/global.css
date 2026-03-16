@@ -635,7 +635,7 @@ a{color:inherit}
 
 /* iluminación de arquitectura al interactuar */
 
-.abstractCard:hover .arch-lines line{
+.hero_media:hover .arch-lines line{
 
   stroke:rgba(160,200,255,.9);
 
@@ -765,7 +765,7 @@ a{color:inherit}
 
 /* iluminación de nodo asociado */
 
-.abstractCard:hover .arch-nodes circle:nth-child(1){
+.hero_media:hover .arch-nodes circle:nth-child(1){
 
   fill:#ffffff;
 
@@ -777,7 +777,7 @@ a{color:inherit}
 
 }
 
-.abstractCard:hover .arch-nodes circle:nth-child(2){
+.hero_media:hover .arch-nodes circle:nth-child(2){
 
   fill:#ffffff;
 
@@ -789,7 +789,7 @@ a{color:inherit}
 
 }
 
-.abstractCard:hover .arch-nodes circle:nth-child(3){
+.hero_media:hover .arch-nodes circle:nth-child(3){
 
   fill:#ffffff;
 
@@ -801,7 +801,7 @@ a{color:inherit}
 
 }
 
-.abstractCard:hover .arch-nodes circle:nth-child(4){
+.hero_media:hover .arch-nodes circle:nth-child(4){
 
   fill:#ffffff;
 
@@ -873,7 +873,7 @@ text-shadow:0 0 6px rgba(120,160,255,.25);
 
 }
 
-.abstractCard:hover .layer{
+.hero_media:hover .layer{
 
   opacity:.9;
 
