@@ -93,7 +93,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 
 <script>
 document.addEventListener("mousemove", (e) => {
-  const cards = document.querySelectorAll(".mediaCard");
+  const cards = document.querySelectorAll<HTMLElement>(".mediaCard");
 
   cards.forEach(card => {
     const rect = card.getBoundingClientRect();
