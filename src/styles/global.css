@@ -719,6 +719,17 @@ a{color:inherit}
 .arch-nodes circle:nth-child(3){ animation-delay:.8s; }
 .arch-nodes circle:nth-child(4){ animation-delay:1.2s; }
 
+.arch-flow circle{
+
+  fill:#ffffff;
+
+  filter:
+    drop-shadow(0 0 6px rgba(120,160,255,.9));
+
+  opacity:.9;
+
+}
+
 @keyframes nodePulse{
 
   0%{
