@@ -739,6 +739,15 @@ a{color:inherit}
 
 }
 
+.arch-nodes circle{
+
+  transition:
+    transform .4s ease,
+    filter .4s ease,
+    fill .4s ease;
+
+}
+
 .arch-nodes circle:nth-child(2){ animation-delay:.4s; }
 .arch-nodes circle:nth-child(3){ animation-delay:.8s; }
 .arch-nodes circle:nth-child(4){ animation-delay:1.2s; }
@@ -754,18 +763,94 @@ a{color:inherit}
 
 }
 
+/* iluminación de nodo asociado */
+
+.abstractCard:hover .arch-nodes circle:nth-child(1){
+
+  fill:#ffffff;
+
+  filter:
+    drop-shadow(0 0 8px rgba(160,200,255,1))
+    drop-shadow(0 0 18px rgba(120,160,255,.9));
+
+  transform:scale(1.4);
+
+}
+
+.abstractCard:hover .arch-nodes circle:nth-child(2){
+
+  fill:#ffffff;
+
+  filter:
+    drop-shadow(0 0 8px rgba(160,200,255,1))
+    drop-shadow(0 0 18px rgba(120,160,255,.9));
+
+  transform:scale(1.4);
+
+}
+
+.abstractCard:hover .arch-nodes circle:nth-child(3){
+
+  fill:#ffffff;
+
+  filter:
+    drop-shadow(0 0 8px rgba(160,200,255,1))
+    drop-shadow(0 0 18px rgba(120,160,255,.9));
+
+  transform:scale(1.4);
+
+}
+
+.abstractCard:hover .arch-nodes circle:nth-child(4){
+
+  fill:#ffffff;
+
+  filter:
+    drop-shadow(0 0 8px rgba(160,200,255,1))
+    drop-shadow(0 0 18px rgba(120,160,255,.9));
+
+  transform:scale(1.4);
+
+}
+
 .arch-layers{
 
   position:absolute;
   inset:0;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:space-around;
-
-  padding:40px;
-
   pointer-events:none;
+
+}
+
+.layer-gov{
+
+  position:absolute;
+  top:70px;
+  left:110px;
+
+}
+
+.layer-int{
+
+  position:absolute;
+  top:120px;
+  left:110px;
+
+}
+
+.layer-msg{
+
+  position:absolute;
+  top:185px;
+  left:110px;
+
+}
+
+.layer-cont{
+
+  position:absolute;
+  top:260px;
+  left:110px;
 
 }
 
