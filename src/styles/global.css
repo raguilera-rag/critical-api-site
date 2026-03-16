@@ -873,7 +873,7 @@ text-shadow:0 0 6px rgba(120,160,255,.25);
 
 }
 
-.hero_media:hover .layer{
+.hero__media:hover .layer{
 
   opacity:.9;
 
