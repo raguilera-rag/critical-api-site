@@ -1160,3 +1160,40 @@ text-shadow:0 0 6px rgba(120,160,255,.18);
     filter .4s ease,
     transform .4s ease;
 }
+
+/* =========================
+   DIAGRAMA RESPONSIVE
+========================= */
+
+@media (max-width: 640px){
+
+.arch-diagram{
+transform: scale(.85);
+transform-origin: center;
+}
+
+/* Gobernanza */
+.layer-gov{
+top:55px;
+left:120px;
+}
+
+/* Integración */
+.layer-int{
+top:105px;
+left:240px;
+}
+
+/* Mensajería */
+.layer-msg{
+top:175px;
+left:110px;
+}
+
+/* Continuidad */
+.layer-cont{
+top:230px;
+left:35px;
+}
+
+}
