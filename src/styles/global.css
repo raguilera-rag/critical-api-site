@@ -409,8 +409,8 @@ a{color:inherit}
 }
 
 .hero{
-  padding-top: 96px;
-  padding-bottom: 72px;
+  padding-top: 120px;
+  padding-bottom: 96px;
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 36px;
@@ -517,8 +517,8 @@ a{color:inherit}
 }
 
 .split{
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 .split__grid{
   display:grid;
@@ -616,27 +616,56 @@ a{color:inherit}
   position: relative;
   height: 420px;
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.02)
+    );
+
   border: 1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.04);
+
   overflow: hidden;
 }
 
 .abstractGlow{
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(37,99,235,.35), transparent 60%);
-  top: -120px;
-  right: -120px;
+
+  width: 520px;
+  height: 520px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37,99,235,.35),
+      transparent 60%
+    );
+
+  top: -140px;
+  right: -140px;
+
+  filter: blur(6px);
+  opacity: .9;
 }
 
 .abstractLines{
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: .2;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+
+  background-size: 42px 42px;
+
+  opacity: .18;
+
+  mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
 }
 
 /* ========== Inner pages (match Home tone) ========== */
