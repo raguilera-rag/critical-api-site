@@ -826,7 +826,7 @@ a{color:inherit}
 
   position:absolute;
   top:70px;
-  left:110px;
+  left:130px;
 
 }
 
@@ -834,7 +834,7 @@ a{color:inherit}
 
   position:absolute;
   top:120px;
-  left:110px;
+  left:130px;
 
 }
 
@@ -842,7 +842,7 @@ a{color:inherit}
 
   position:absolute;
   top:185px;
-  left:110px;
+  left:130px;
 
 }
 
@@ -850,7 +850,7 @@ a{color:inherit}
 
   position:absolute;
   top:260px;
-  left:110px;
+  left:130px;
 
 }
 
@@ -860,8 +860,8 @@ a{color:inherit}
 
   letter-spacing:.08em;
 
-color:rgba(200,220,255,.85);
-text-shadow:0 0 6px rgba(120,160,255,.25);
+color:rgba(200,220,255,.72);
+text-shadow:0 0 6px rgba(120,160,255,.18);
 
   opacity:0;
 
@@ -881,13 +881,13 @@ text-shadow:0 0 6px rgba(120,160,255,.25);
 
 }
 
-.layer-1{ transition-delay:.1s; }
+.layer-gov{ transition-delay:.05s; }
 
-.layer-2{ transition-delay:.2s; }
+.layer-int{ transition-delay:.15s; }
 
-.layer-3{ transition-delay:.3s; }
+.layer-msg{ transition-delay:.25s; }
 
-.layer-4{ transition-delay:.4s; }
+.layer-cont{ transition-delay:.35s; }
 
 
 @keyframes nodePulse{
