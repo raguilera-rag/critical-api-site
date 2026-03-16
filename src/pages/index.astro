@@ -25,8 +25,11 @@ const cards = [
 ---
 
 <BaseLayout title="Critical API Services">
+
+  <!-- HERO -->
   <HeroSplit />
 
+  <!-- SECCIÓN 1 -->
   <SectionSplit
     title="Marco de decisión y continuidad operacional"
     body="Definición estructurada de criterios técnicos, evaluación de escenarios y soporte estratégico en sistemas donde la interrupción no es una opción."
@@ -34,15 +37,19 @@ const cards = [
     linkLabel="Ver enfoque"
   />
 
+  <!-- SECCIÓN 2 -->
   <SectionSplit
     title="Riesgo estructural y resiliencia institucional"
-body="Análisis de dependencias, umbrales críticos y arquitectura de escenarios. Entregables acotados, trazables y consistentes con marcos regulatorios y operacionales."
+    body="Análisis de dependencias, umbrales críticos y arquitectura de escenarios. Entregables acotados, trazables y consistentes con marcos regulatorios y operacionales."
     reverse={true}
     href="/ambitos"
     linkLabel="Ver ámbitos"
   />
 
+  <!-- TARJETAS -->
   <CardsGrid items={cards} />
 
+  <!-- CALL TO ACTION -->
   <CTA />
+
 </BaseLayout>
