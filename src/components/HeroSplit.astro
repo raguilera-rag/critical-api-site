@@ -47,13 +47,15 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
       {primaryLabel && (
         <a class="btn btn--ghost" href={primaryHref}>
-          {primaryLabel} <span class="arrow">→</span>
+          {primaryLabel}
+          <span class="arrow">→</span>
         </a>
       )}
 
       {secondaryHref && secondaryLabel && (
         <a class="btn btn--ghost" href={secondaryHref}>
-          {secondaryLabel} <span class="arrow">→</span>
+          {secondaryLabel}
+          <span class="arrow">→</span>
         </a>
       )}
 
@@ -69,6 +71,8 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
       <div class="abstractGlow"></div>
 
+      <div class="abstractLines"></div>
+
       <div class="panel-text">
         “Arquitectura para sistemas<br>
         donde la interrupción<br>
@@ -83,6 +87,7 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
 
 <script>
+
 const card = document.querySelector(".abstractCard");
 
 if (card instanceof HTMLElement) {
@@ -100,4 +105,5 @@ if (card instanceof HTMLElement) {
   });
 
 }
+
 </script>
