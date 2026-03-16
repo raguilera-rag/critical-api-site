@@ -843,32 +843,32 @@ stroke: rgba(120,160,255,.35);
 .layer-gov{
 
   position:absolute;
-  top:95px;
-  left:60px;
+  top:45px;
+  left:170px;
 
 }
 
 .layer-int{
 
   position:absolute;
-  top:85px;
-  left:330px;
+  top:110px;
+  left:335px;
 
 }
 
 .layer-msg{
 
   position:absolute;
-  top:180px;
-  left:155px;
+  top:185px;
+  left:145px;
 
 }
 
 .layer-cont{
 
   position:absolute;
-  top:240px;
-  left:55px;
+  top:255px;
+  left:60px;
 
 }
 
