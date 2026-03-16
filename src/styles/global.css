@@ -633,6 +633,20 @@ a{color:inherit}
   overflow: hidden;
 }
 
+/* iluminación de arquitectura al interactuar */
+
+.abstractCard:hover .arch-lines line{
+
+  stroke:rgba(160,200,255,.9);
+
+  filter:drop-shadow(0 0 6px rgba(120,160,255,.6));
+
+  transition:
+    stroke .4s ease,
+    filter .4s ease;
+
+}
+
 .abstractGlow{
   position: absolute;
 
@@ -999,4 +1013,9 @@ text-shadow:0 0 6px rgba(120,160,255,.25);
   font-weight:500;
 
   z-index:2;   /* encima del glow */
+
+  transition:
+    opacity .4s ease,
+    filter .4s ease,
+    transform .4s ease;
 }
