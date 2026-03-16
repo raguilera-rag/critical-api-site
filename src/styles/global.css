@@ -673,16 +673,19 @@ a{color:inherit}
   inset:0;
   width:100%;
   height:100%;
-  opacity:.35;
+  opacity:.55;
   transition: transform .4s ease;
 }
 
 .arch-lines line{
-  stroke:rgba(120,160,255,.35);
-  stroke-width:1;
+
+  stroke: rgba(160,190,255,.55);
+  stroke-width: 1.2;
 
   stroke-dasharray:6 6;
+
   animation: flow 8s linear infinite;
+
 }
 
 @keyframes flow{
@@ -698,12 +701,18 @@ a{color:inherit}
 }
 
 .arch-nodes circle{
-  fill: rgba(120,160,255,.9);
 
-  transform-origin: center;
-  transform-box: fill-box;
+  fill: #cfe2ff;
+
+  filter:
+    drop-shadow(0 0 4px rgba(120,160,255,.9))
+    drop-shadow(0 0 10px rgba(120,160,255,.5));
+
+  transform-origin:center;
+  transform-box:fill-box;
 
   animation: nodePulse 3s ease-in-out infinite;
+
 }
 
 .arch-nodes circle:nth-child(2){ animation-delay:.4s; }
