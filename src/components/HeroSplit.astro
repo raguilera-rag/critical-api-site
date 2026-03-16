@@ -69,15 +69,40 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
     <div class="abstractCard">
 
-      <div class="abstractGlow"></div>
+  <div class="abstractGlow"></div>
 
-      <div class="abstractLines"></div>
+  <div class="abstractLines"></div>
 
-      <div class="panel-text">
-        “Arquitectura para sistemas<br>
-        donde la interrupción<br>
-        no es una opción.”
-      </div>
+  <!-- Red abstracta de arquitectura -->
+  <svg class="arch-diagram" viewBox="0 0 400 400" aria-hidden="true">
+
+    <g class="arch-lines">
+
+      <line x1="80" y1="100" x2="200" y2="80" />
+      <line x1="200" y1="80" x2="320" y2="140" />
+      <line x1="80" y1="220" x2="200" y2="80" />
+      <line x1="200" y1="200" x2="320" y2="140" />
+      <line x1="80" y1="220" x2="200" y2="200" />
+
+    </g>
+
+    <g class="arch-nodes">
+
+      <circle cx="80" cy="100" r="4"/>
+      <circle cx="200" cy="80" r="4"/>
+      <circle cx="320" cy="140" r="4"/>
+      <circle cx="80" cy="220" r="4"/>
+      <circle cx="200" cy="200" r="4"/>
+
+    </g>
+
+  </svg>
+
+  <div class="panel-text">
+    “Arquitectura para sistemas<br>
+    donde la interrupción<br>
+    no es una opción.”
+  </div>
 
     </div>
 
