@@ -844,31 +844,31 @@ stroke: rgba(120,160,255,.35);
 
   position:absolute;
   top:95px;
-  left:55px;
+  left:60px;
 
 }
 
 .layer-int{
 
   position:absolute;
-  top:72px;
-  left:345px;
+  top:85px;
+  left:330px;
 
 }
 
 .layer-msg{
 
   position:absolute;
-  top:205px;
-  left:215px;
+  top:180px;
+  left:155px;
 
 }
 
 .layer-cont{
 
   position:absolute;
-  top:250px;
-  left:70px;
+  top:240px;
+  left:55px;
 
 }
 
