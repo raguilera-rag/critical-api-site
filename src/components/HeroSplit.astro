@@ -1,10 +1,8 @@
 ---
 /**
  * HeroSplit.astro
- * Hero principal del Home, con estilo sobrio/minimalista.
- * - Kicker: línea doctrinal (no marketing)
- * - Title: admite saltos de línea usando \n
- * - Lead: párrafo de soporte (controlado)
+ * Hero principal del Home.
+ * Diseño sobrio orientado a infraestructura crítica.
  */
 
 interface Props {
@@ -12,9 +10,9 @@ interface Props {
   title?: string;
   lead?: string;
   primaryHref?: string;
-  primaryLabel?: string; // (opcional) si no lo pasas, no se muestra
+  primaryLabel?: string;
   secondaryHref?: string;
-  secondaryLabel?: string; // (opcional) si no lo pasas, no se muestra
+  secondaryLabel?: string;
 }
 
 const {
@@ -24,14 +22,17 @@ const {
   primaryHref = "/contacto",
   primaryLabel = "Contacto institucional",
   secondaryHref,
-  secondaryLabel,
+  secondaryLabel
 } = Astro.props as Props;
 
 const titleLines = String(title).split("\n").filter(Boolean);
 ---
 
 <section class="container hero">
+
+  <!-- TEXTO HERO -->
   <div class="hero__text">
+
     <div class="kicker">{kicker}</div>
 
     <h1 class="hero__title">
@@ -43,6 +44,7 @@ const titleLines = String(title).split("\n").filter(Boolean);
     <p class="hero__lead">{lead}</p>
 
     <div class="hero__actions">
+
       {primaryLabel && (
         <a class="btn btn--ghost" href={primaryHref}>
           {primaryLabel} <span class="arrow">→</span>
@@ -54,13 +56,48 @@ const titleLines = String(title).split("\n").filter(Boolean);
           {secondaryLabel} <span class="arrow">→</span>
         </a>
       )}
+
     </div>
+
   </div>
 
+
+  <!-- PANEL CONCEPTUAL -->
   <div class="hero__media" aria-hidden="true">
+
     <div class="abstractCard">
+
       <div class="abstractGlow"></div>
-      <div class="abstractLines"></div>
+
+      <div class="panel-text">
+        “Arquitectura para sistemas<br>
+        donde la interrupción<br>
+        no es una opción.”
+      </div>
+
     </div>
+
   </div>
+
 </section>
+
+
+<script>
+const card = document.querySelector(".abstractCard");
+
+if (card instanceof HTMLElement) {
+
+  card.addEventListener("mousemove", (e) => {
+
+    const rect = card.getBoundingClientRect();
+
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    card.style.setProperty("--mx", x + "%");
+    card.style.setProperty("--my", y + "%");
+
+  });
+
+}
+</script>
