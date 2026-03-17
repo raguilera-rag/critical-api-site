@@ -88,24 +88,27 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
     <g class="arch-flow">
 
-    <circle r="2">
+    <circle r="2" opacity="0">
       <animateMotion
         dur="6s"
         repeatCount="indefinite"
+        begin="indefinite"
         path="M80 100 L200 80 L320 140" />
     </circle>
 
-    <circle r="2">
+    <circle r="2" opacity="0">
       <animateMotion
         dur="7s"
         repeatCount="indefinite"
+        begin="indefinite"
         path="M80 220 L200 80 L320 140" />
     </circle>
 
-    <circle r="2">
+    <circle r="2" opacity="0">
       <animateMotion
         dur="5s"
         repeatCount="indefinite"
+        begin="indefinite"
         path="M80 220 L200 200 L320 140" />
     </circle>
 
@@ -151,46 +154,30 @@ const titleLines = String(title).split("\n").filter(Boolean);
 
 </section>
 
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
 
-<script>
+  const hero = document.querySelector('.hero__media');
 
-const card = document.querySelector(".abstractCard");
-const diagram = document.querySelector("#arch-diagram");
+  if (!hero) return;
 
-if (card instanceof HTMLElement) {
-
-  card.addEventListener("mousemove", (e) => {
-
-    const rect = card.getBoundingClientRect();
-
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    /* glow dinámico */
-    card.style.setProperty("--mx", x + "%");
-    card.style.setProperty("--my", y + "%");
-
-    /* movimiento de topología */
-    if (diagram instanceof SVGElement) {
-
-      const offsetX = ((e.clientX - rect.left) / rect.width) - 0.5;
-      const offsetY = ((e.clientY - rect.top) / rect.height) - 0.5;
-
-      diagram.style.transform =
-        `translate(${offsetX * 10}px, ${offsetY * 10}px)`;
-
-    }
-
+  hero.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.arch-flow animateMotion')
+      .forEach(el => {
+        try {
+          el.beginElement && el.beginElement();
+        } catch(e){}
+      });
   });
 
-  card.addEventListener("mouseleave", () => {
-
-    if (diagram instanceof SVGElement) {
-      diagram.style.transform = "translate(0px,0px)";
-    }
-
+  hero.addEventListener('mouseleave', () => {
+    document.querySelectorAll('.arch-flow animateMotion')
+      .forEach(el => {
+        try {
+          el.endElement && el.endElement();
+        } catch(e){}
+      });
   });
 
-}
-
+});
 </script>

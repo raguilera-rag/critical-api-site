@@ -125,5 +125,24 @@ function animateGlow(){
 animateGlow();
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const hero = document.querySelector('.hero__media');
+  const flows = document.querySelectorAll('.arch-flow animateMotion');
+
+  if (!hero || flows.length === 0) return;
+
+  hero.addEventListener('mouseenter', () => {
+    flows.forEach(f => (f as any).endElement());
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    flows.forEach(f => (f as any).endElement());
+  });
+
+});
+</script>
+
 </body>
 </html>
