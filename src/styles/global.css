@@ -278,10 +278,17 @@ a:hover{
 
 .footer-right{
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 10px;
+}
+
+.footer-links{
+  display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 }
 
 .footer-link{
@@ -304,12 +311,42 @@ a:hover{
   font-size: 12px;
 }
 
+.footer-unit{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-unit-label{
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.42);
+}
+
+.footer-unit-link{
+  font-weight: 700;
+  color: rgba(255,255,255,.86);
+}
+
 @media (max-width: 720px){
   .footer-inner{
     flex-direction: column;
     align-items: flex-start;
   }
+
   .footer-right{
+    align-items: flex-start;
+  }
+
+  .footer-links{
+    justify-content: flex-start;
+  }
+
+  .footer-unit{
     justify-content: flex-start;
   }
 }
