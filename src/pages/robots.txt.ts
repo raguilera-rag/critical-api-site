@@ -38,7 +38,7 @@ User-agent: FacebookBot
 Disallow: /
 
 # Sitemap
-Sitemap: https://criticalapiservices.com/sitemap-index.xml
+Sitemap: https://criticalapiservices.com/sitemap.xml
 `,
 {
   headers: {
