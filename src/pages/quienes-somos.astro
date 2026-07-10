@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Quiénes somos | Critical API Services";
+const description = "Critical API Services es una firma especializada en decisiones tecnológicas críticas, continuidad operacional y acompañamiento técnico ejecutivo.";
+
+const identity = [
+  {
+    title: "Por qué existimos",
+    body: "Para ayudar a organizaciones a reducir incertidumbre cuando una decisión tecnológica impacta continuidad, operación y confianza institucional.",
+  },
+  {
+    title: "Qué problema resolvemos",
+    body: "Ordenamos escenarios técnicos complejos y los convertimos en decisiones claras, defendibles y ejecutables.",
+  },
+  {
+    title: "Qué no somos",
+    body: "No operamos como soporte técnico ni como proveedor genérico. Acompañamos decisiones y capacidades críticas.",
+  },
+];
+
+const criteria = [
+  {
+    label: "Criterio",
+    title: "Mirada ejecutiva",
+    body: "Conectamos arquitectura, riesgo, operación y negocio para que la tecnología no sea una conversación aislada.",
+  },
+  {
+    label: "Criterio",
+    title: "Experiencia en entornos críticos",
+    body: "Trabajamos con problemas donde disponibilidad, trazabilidad, seguridad y gobernanza son condiciones mínimas.",
+  },
+  {
+    label: "Criterio",
+    title: "Acompañamiento responsable",
+    body: "Cada intervención se ajusta al contexto, al nivel de exposición permitido y al ritmo real de la organización.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Compañía"
+    title="Una firma especializada en decisiones tecnológicas críticas"
+    lead="Acompañamos a organizaciones que necesitan decidir, implementar y evolucionar tecnología sin comprometer continuidad operacional."
+    metricLabel="Posición"
+    metricValue="Socio técnico para decisiones críticas"
+    variant="governance"
+  />
+
+  <PageIntro paragraphs={[
+    "Critical API Services nace para acompañar organizaciones en momentos donde la tecnología deja de ser solo infraestructura y se transforma en una decisión de negocio.",
+    "Nuestra contribución está en aportar criterio, método y claridad para sostener plataformas, integraciones y capacidades que no pueden fallar.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Identidad" title="Qué somos y qué resolvemos" />
+      <CapabilityGrid items={identity} />
+    </div>
+  </section>
+
+  <section class="internal-section">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Criterio institucional" title="Una forma sobria de abordar lo crítico" />
+      <CapabilityGrid items={criteria} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

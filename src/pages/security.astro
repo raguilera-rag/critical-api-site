@@ -1,158 +1,51 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ContentCard from "../components/ContentCard.astro";
+
+const title = "Política de divulgación de seguridad | Critical API Services";
+const description = "Canal y criterios para reportes responsables de seguridad relacionados con Critical API Services.";
 ---
 
-<BaseLayout title="Security Disclosure | Critical API Services">
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Security disclosure"
+    title="Política de divulgación de seguridad"
+    lead="Recibimos reportes responsables que contribuyan a mantener la integridad y resiliencia de nuestros canales públicos."
+    metricLabel="Contacto"
+    metricValue="security@criticalapiservices.com"
+    variant="security"
+  />
 
-<section class="container">
-
-<h1>Security Disclosure</h1>
-
-<section class="container">
-
-<h1>Security Disclosure</h1>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Critical API Services",
-  "url": "https://criticalapiservices.com",
-  "email": "security@criticalapiservices.com",
-  "securityPolicy": "https://criticalapiservices.com/security",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "security",
-    "email": "security@criticalapiservices.com"
-  }
-}
-</script>
-
-<p style="opacity:.7;margin-bottom:40px">
-English version first. Spanish version below.
-</p>
-
-<p>
-Critical API Services is committed to maintaining the security and integrity of its systems and services.
-We welcome responsible security research and vulnerability reports that help improve our infrastructure.
-</p>
-
-<h2>Responsible Disclosure Policy</h2>
-
-<p>
-If you believe you have discovered a security vulnerability affecting our website, infrastructure, or
-associated services, please report it responsibly. We ask that researchers provide sufficient information
-to reproduce the issue and allow adequate time for investigation and remediation before any public disclosure.
-</p>
-
-<h2>Reporting a Vulnerability</h2>
-
-<p>
-Security reports may be submitted to the contact channel specified in our security.txt file:
-</p>
-
-<p>
-<strong>security@criticalapiservices.com</strong>
-</p>
-
-<p>
-Please include the following information when possible:
-</p>
-
-<ul>
-<li>Description of the vulnerability</li>
-<li>Steps to reproduce the issue</li>
-<li>Potential impact</li>
-<li>Proof of concept (if available)</li>
-</ul>
-
-<h2>Scope</h2>
-
-<p>
-This disclosure policy applies only to the public website and associated infrastructure operated
-by Critical API Services.
-</p>
-
-<p>
-Testing that could degrade service availability, compromise data, or affect third parties is not permitted.
-</p>
-
-<h2>Legal Safe Harbor</h2>
-
-<p>
-We support good-faith security research. Activities conducted in accordance with this policy will not
-result in legal action provided they do not violate applicable laws or intentionally disrupt services.
-</p>
-
-<h2>Acknowledgement</h2>
-
-<p>
-We appreciate the work of security researchers who help improve the resilience and safety of digital infrastructure.
-</p>
-
-<hr style="margin:60px 0; opacity:.15">
-
-<h1>Política de Divulgación de Seguridad</h1>
-
-<p>
-Critical API Services está comprometido con mantener la seguridad e integridad de sus sistemas y servicios. 
-Valoramos la investigación de seguridad responsable y los reportes de vulnerabilidades que contribuyan 
-a mejorar la resiliencia de nuestra infraestructura.
-</p>
-
-<h2>Divulgación Responsable</h2>
-
-<p>
-Si considera haber descubierto una vulnerabilidad que afecte nuestro sitio web, infraestructura 
-o servicios asociados, le solicitamos reportarla de forma responsable. 
-Pedimos que los investigadores proporcionen suficiente información para reproducir el problema 
-y permitan el tiempo necesario para su análisis y mitigación antes de cualquier divulgación pública.
-</p>
-
-<h2>Reporte de Vulnerabilidades</h2>
-
-<p>
-Los reportes pueden enviarse al canal indicado en nuestro archivo security.txt:
-</p>
-
-<p><strong>security@criticalapiservices.com</strong></p>
-
-<p>Incluya, cuando sea posible:</p>
-
-<ul>
-<li>Descripción de la vulnerabilidad</li>
-<li>Pasos para reproducir el problema</li>
-<li>Impacto potencial</li>
-<li>Prueba de concepto (si está disponible)</li>
-</ul>
-
-<h2>Alcance</h2>
-
-<p>
-Esta política aplica únicamente al sitio web público y a la infraestructura asociada 
-operada por Critical API Services.
-</p>
-
-<p>
-No se permite realizar pruebas que puedan degradar la disponibilidad del servicio, 
-comprometer datos o afectar a terceros.
-</p>
-
-<h2>Puerto Seguro Legal</h2>
-
-<p>
-Apoyamos la investigación de seguridad realizada de buena fe. 
-Las actividades realizadas conforme a esta política no darán lugar a acciones legales 
-siempre que no se infrinjan leyes aplicables ni se interrumpan intencionalmente los servicios.
-</p>
-
-<h2>Agradecimientos</h2>
-
-<p>
-Valoramos el trabajo de los investigadores de seguridad que contribuyen a mejorar 
-la resiliencia y seguridad de las infraestructuras digitales.
-</p>
-
-</section>
-
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Reporte responsable"
+        title="Cómo reportar una vulnerabilidad"
+        lead="Esta política aplica al sitio público y canales asociados de Critical API Services."
+      />
+      <div class="internal-grid internal-grid--two">
+        <ContentCard
+          title="Información esperada"
+          body="Incluye detalles suficientes para comprender el hallazgo sin afectar disponibilidad ni datos de terceros."
+          items={[
+            "Descripción de la vulnerabilidad",
+            "Pasos de reproducción",
+            "Impacto potencial",
+            "Prueba de concepto si corresponde",
+          ]}
+        />
+        <ContentCard
+          title="Límites de prueba"
+          body="No están permitidas acciones que degraden servicio, comprometan información o afecten a terceros."
+          items={[
+            "Sin pruebas de denegación de servicio",
+            "Sin acceso a datos no autorizados",
+            "Sin divulgación pública antes de coordinación",
+          ]}
+        />
+      </div>
+    </div>
+  </section>
 </BaseLayout>

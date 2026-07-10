@@ -1,49 +1,63 @@
+---
+import BrandLogo from "./BrandLogo.astro";
+---
+
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-left">
-      <div class="footer-brand">Critical API Services</div>
-
-      <div class="footer-note">
-        Operación, criterio y contenidos bajo principios de reserva y gobernanza.
-      </div>
-
-      <div class="footer-copyright">
-        © {new Date().getFullYear()} Critical API Services SpA. Todos los derechos reservados.
-      </div>
-
-      <div class="footer-disclaimer">
-        La información contenida en este sitio es de carácter general y no constituye documentación técnica pública.
+    <div class="footer-brand-col">
+      <a class="brand brand--footer" href="/" aria-label="Critical API Services">
+        <BrandLogo tone="dark" />
+      </a>
+      <p>
+        Acompañamos a organizaciones en decisiones tecnológicas críticas,
+        desde el análisis hasta la evolución de la solución.
+      </p>
+      <div class="social-links" aria-label="Redes sociales">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
       </div>
     </div>
 
-    <div class="footer-right">
-      <div class="footer-links">
-        <a class="footer-link" href="/confidencialidad">Confidencialidad</a>
-        <span class="footer-sep">—</span>
-
-        <a class="footer-link" href="/security">Security</a>
-        <span class="footer-sep">—</span>
-
-        <a class="footer-link" href="/trust">Trust</a>
-        <span class="footer-sep">—</span>
-
-        <a class="footer-link" href="/approach">Approach</a>
-        <span class="footer-sep">—</span>
-
-        <a class="footer-link" href="/contacto">Contacto</a>
-      </div>
-
-      <div class="footer-unit">
-        <span class="footer-unit-label">Visita también</span>
-        <a
-          class="footer-link footer-unit-link"
-          href="https://care.criticalapiservices.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Critical Digital Care
-        </a>
-      </div>
+    <div class="footer-col">
+      <h2>Compañía</h2>
+      <a href="/quienes-somos">Quiénes Somos</a>
+      <a href="/enfoque">Nuestro Enfoque</a>
+      <a href="/sectores">Sectores</a>
+      <a href="/contacto">Trabajo con Nosotros</a>
     </div>
+
+    <div class="footer-col">
+      <h2>Capacidades</h2>
+      <a href="/capacidades">Arquitectura y Diseño</a>
+      <a href="/ambitos">Continuidad Operacional</a>
+      <a href="/capacidades">Integración y APIs</a>
+      <a href="/capacidades">Gobierno Tecnológico</a>
+      <a href="/capacidades">Ciberseguridad</a>
+    </div>
+
+    <div class="footer-col">
+      <h2>Recursos</h2>
+      <a href="/recursos">Artículos</a>
+      <a href="/recursos">Guías</a>
+      <a href="/recursos">Whitepapers</a>
+      <a href="/recursos">Videos</a>
+      <a href="/casos-de-uso">Casos de Uso</a>
+    </div>
+
+    <div class="footer-col">
+      <h2>Contacto</h2>
+      <a href="mailto:contacto@criticalapiservices.com">contacto@criticalapiservices.com</a>
+      <span>Santiago, Chile</span>
+      <a href="https://care.criticalapiservices.com" target="_blank" rel="noopener noreferrer">Critical Digital Care</a>
+      <a href="https://workspace.criticalapiservices.com/" target="_blank" rel="noopener noreferrer">Critical Workspace</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {new Date().getFullYear()} Critical API Services SpA. Todos los derechos reservados.</span>
+    <span>
+      <a href="/confidencialidad">Política de Privacidad</a>
+      <a href="/confidencialidad">Términos de Uso</a>
+    </span>
   </div>
 </footer>

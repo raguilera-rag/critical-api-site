@@ -1,113 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Integración y APIs | Critical API Services";
+const description = "Enfoque técnico para integración, APIs, arquitectura de decisión y gobernanza en entornos críticos.";
+
+const items = [
+  {
+    title: "Arquitectura de decisión",
+    body: "Las decisiones técnicas se evalúan considerando dependencias, riesgo operacional e impacto institucional.",
+  },
+  {
+    title: "Continuidad operativa",
+    body: "La integración debe sostener escenarios de disponibilidad y recuperación, no solo intercambio funcional.",
+  },
+  {
+    title: "Gobernanza y trazabilidad",
+    body: "Los servicios críticos requieren límites claros de responsabilidad, control y evidencia.",
+  },
+];
 ---
 
-<BaseLayout title="Technical Approach | Critical API Services">
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Integración y APIs"
+    title="Arquitectura de integración para sistemas críticos"
+    lead="Diseñamos criterios para conectar plataformas, datos y servicios sin perder control, trazabilidad ni continuidad operacional."
+    metricLabel="Foco"
+    metricValue="Interoperabilidad confiable"
+    variant="systems"
+  />
 
-<section class="container">
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Marco técnico"
+        title="Integrar sin comprometer la operación"
+        lead="La integración crítica exige claridad sobre exposición, dependencias, gobierno y capacidad de evolución."
+      />
+      <CapabilityGrid items={items} />
+    </div>
+  </section>
 
-<h1>Technical Approach</h1>
-
-<p style="opacity:.7;margin-bottom:40px">
-This page describes the principles guiding technical decision architecture in high-criticality digital environments.
-English version first. Spanish version below.
-</p>
-
-<p>
-Critical API Services focuses on technical decision architecture, infrastructure analysis and governance frameworks
-designed for environments where operational continuity is essential.
-</p>
-
-<h2>Decision Architecture</h2>
-
-<p>
-Technical decisions in complex infrastructures must consider dependencies, operational risk and institutional impact.
-Our approach prioritizes clarity in system interaction, traceability across components and controlled exposure of
-critical services.
-</p>
-
-<h2>Operational Continuity</h2>
-
-<p>
-Systems operating in high-availability contexts require architectural evaluation that goes beyond functional deployment.
-The focus is on resilience, dependency management and scenario analysis where service interruption is not acceptable.
-</p>
-
-<h2>Infrastructure Perspective</h2>
-
-<p>
-Rather than focusing on isolated technologies, our approach analyzes platforms as interconnected systems.
-Decision frameworks are developed considering integration layers, data flows and operational constraints.
-</p>
-
-<h2>Governance and Traceability</h2>
-
-<p>
-Governance in technical infrastructures requires clear boundaries between responsibility, control and operational
-capability. Architectural clarity supports decision making and reduces systemic risk.
-</p>
-
-<h2>Institutional Context</h2>
-
-<p>
-Critical infrastructure environments often involve regulatory constraints, multiple stakeholders and operational
-sensitivity. Technical architecture must align with institutional objectives while preserving system stability.
-</p>
-
-<hr style="margin:60px 0; opacity:.15">
-
-<h1>Enfoque Técnico</h1>
-
-<p>
-Esta página describe los principios que guían la arquitectura de decisión técnica en entornos digitales
-de alta criticidad. La versión en inglés aparece primero y la versión en español a continuación.
-</p>
-
-<p>
-Critical API Services se enfoca en arquitectura de decisión técnica, análisis de infraestructura
-y marcos de gobernanza diseñados para entornos donde la continuidad operativa es esencial.
-</p>
-
-<h2>Arquitectura de Decisión</h2>
-
-<p>
-Las decisiones técnicas en infraestructuras complejas deben considerar dependencias, riesgo operacional
-e impacto institucional. Nuestro enfoque prioriza la claridad en la interacción entre sistemas,
-la trazabilidad entre componentes y la exposición controlada de servicios críticos.
-</p>
-
-<h2>Continuidad Operativa</h2>
-
-<p>
-Los sistemas que operan en contextos de alta disponibilidad requieren evaluaciones arquitectónicas
-que van más allá de la implementación funcional. El foco está en la resiliencia, la gestión de
-dependencias y el análisis de escenarios donde la interrupción del servicio no es aceptable.
-</p>
-
-<h2>Perspectiva de Infraestructura</h2>
-
-<p>
-En lugar de enfocarse en tecnologías aisladas, nuestro enfoque analiza las plataformas como sistemas
-interconectados. Los marcos de decisión se desarrollan considerando capas de integración,
-flujos de datos y restricciones operacionales.
-</p>
-
-<h2>Gobernanza y Trazabilidad</h2>
-
-<p>
-La gobernanza en infraestructuras técnicas requiere límites claros entre responsabilidad,
-control y capacidad operativa. La claridad arquitectónica facilita la toma de decisiones
-y reduce el riesgo sistémico.
-</p>
-
-<h2>Contexto Institucional</h2>
-
-<p>
-Los entornos de infraestructura crítica suelen involucrar restricciones regulatorias,
-múltiples actores y sensibilidad operacional. La arquitectura técnica debe alinearse
-con los objetivos institucionales preservando la estabilidad del sistema.
-</p>
-
-</section>
-
+  <CTASection />
 </BaseLayout>

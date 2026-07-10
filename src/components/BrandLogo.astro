@@ -1,0 +1,28 @@
+---
+const { tone = "light" } = Astro.props;
+
+const logos = {
+  light: {
+    src: "/critical-logo-dark_on_light.png",
+    width: 1496,
+    height: 429,
+  },
+  dark: {
+    src: "/critical-logo-light_on_dark.png",
+    width: 1448,
+    height: 386,
+  },
+};
+
+const logo = logos[tone] ?? logos.light;
+---
+
+<img
+  class={`brand-logo brand-logo--${tone}`}
+  src={logo.src}
+  alt="Critical API Services"
+  width={logo.width}
+  height={logo.height}
+  loading="eager"
+  decoding="async"
+/>

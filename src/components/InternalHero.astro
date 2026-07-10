@@ -1,0 +1,68 @@
+---
+const {
+  eyebrow,
+  title,
+  lead,
+  image = "/hero-critical-city.png",
+  imageAlt = "",
+  metricLabel = "Continuidad operacional",
+  metricValue = "Criterio técnico",
+  variant = "strategy",
+  features = [
+    {
+      title: "Qué encontrarás",
+      body: "Ideas, criterios y marcos para comprender y abordar decisiones tecnológicas críticas.",
+      icon: "compass",
+    },
+    {
+      title: "Para quién está pensado",
+      body: "Equipos ejecutivos, técnicos y de gobierno responsables de continuidad y evolución tecnológica.",
+      icon: "users",
+    },
+    {
+      title: "Cómo utilizarlo",
+      body: "Revisa el contenido, identifica brechas y úsalo para impulsar conversaciones informadas.",
+      icon: "light",
+    },
+  ],
+} = Astro.props;
+
+const icons = {
+  compass: `<circle cx="12" cy="12" r="9"/><path d="m15 9-2.2 5.8L9 16l2.2-5.8L15 9Z"/>`,
+  users: `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.8"/><path d="M16 3.2a4 4 0 0 1 0 7.6"/>`,
+  light: `<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.7.5 1 1.2 1 2.1V17h6v-.2c0-.9.3-1.6 1-2.1A7 7 0 0 0 12 2Z"/>`,
+};
+---
+
+<section class={`internal-hero internal-hero--${variant}`}>
+  <div class="internal-hero__stage">
+    <div class="internal-hero__visual" aria-hidden={imageAlt ? "false" : "true"}>
+      <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+      <span class="internal-hero__mesh"></span>
+      <div class="internal-hero__badge">
+        <span>{metricLabel}</span>
+        <strong>{metricValue}</strong>
+      </div>
+    </div>
+
+    <div class="internal-hero__inner">
+      <div class="internal-hero__copy">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {lead && <p>{lead}</p>}
+      </div>
+    </div>
+  </div>
+
+  <div class="internal-hero__features">
+    <div class="internal-wrap internal-hero__features-grid">
+      {features.map((feature) => (
+        <article>
+          <svg class="feature-icon" viewBox="0 0 24 24" aria-hidden="true" set:html={icons[feature.icon] ?? icons.compass}></svg>
+          <h2>{feature.title}</h2>
+          <p>{feature.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

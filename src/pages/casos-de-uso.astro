@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Casos de uso | Critical API Services";
+const description = "Casos de uso prudentes sobre alta disponibilidad, integración segura, modernización, continuidad y gobierno de entornos críticos.";
+
+const cases = [
+  {
+    label: "Continuidad operacional",
+    title: "Alta disponibilidad en plataforma crítica",
+    body: "Evaluación de arquitectura, dependencias y escenarios de falla para reducir exposición operacional.",
+  },
+  {
+    label: "Integración y APIs",
+    title: "Integración segura de sistemas",
+    body: "Ordenamiento de flujos, APIs y controles para conectar sistemas sin perder trazabilidad.",
+  },
+  {
+    label: "Modernización",
+    title: "Modernización sin interrumpir operación",
+    body: "Diseño de transición para evolucionar plataformas manteniendo continuidad y control.",
+  },
+  {
+    label: "Resiliencia",
+    title: "Evaluación de continuidad",
+    body: "Revisión de capacidades, brechas y prioridades para fortalecer respuesta ante interrupciones.",
+  },
+  {
+    label: "Gobierno",
+    title: "Gobierno de entornos críticos",
+    body: "Definición de criterios, responsables y evidencias para tomar decisiones con mayor claridad.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Casos de uso"
+    title="Problemas reales. Resultados reales."
+    lead="Escenarios habituales donde una decisión tecnológica debe equilibrar continuidad, control y evolución."
+    metricLabel="Enfoque"
+    metricValue="Formulación prudente y ejecutiva"
+    variant="systems"
+  />
+
+  <PageIntro paragraphs={[
+    "Los casos de uso muestran tipos de problemas que abordamos. No buscan reemplazar un diagnóstico: ayudan a reconocer patrones de riesgo y oportunidades de mejora.",
+    "Cada caso se trabaja con alcance definido, evidencia disponible y criterios acordados con la organización.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Escenarios" title="Dónde una intervención puede generar valor" />
+      <CapabilityGrid items={cases} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

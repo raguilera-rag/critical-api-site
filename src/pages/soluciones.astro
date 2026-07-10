@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Soluciones | Critical API Services";
+const description = "Soluciones para diagnóstico tecnológico, continuidad operacional, modernización, integración segura, gobierno y evaluación de arquitectura crítica.";
+
+const solutions = [
+  {
+    title: "Diagnóstico tecnológico",
+    body: "Evaluación ejecutiva de arquitectura, riesgos, dependencias y brechas que afectan una decisión crítica.",
+  },
+  {
+    title: "Acompañamiento de continuidad operacional",
+    body: "Ruta de análisis y fortalecimiento para plataformas donde la interrupción tiene impacto relevante.",
+  },
+  {
+    title: "Modernización sin interrupción",
+    body: "Planificación de evolución tecnológica con foco en control, transición y reducción de riesgo operativo.",
+  },
+  {
+    title: "Integración segura de sistemas",
+    body: "Diseño de capas de integración, exposición de APIs y trazabilidad de flujos críticos.",
+  },
+  {
+    title: "Gobierno tecnológico",
+    body: "Definición de criterios, roles, controles y evidencias para operar con responsabilidad.",
+  },
+  {
+    title: "Evaluación de arquitectura crítica",
+    body: "Revisión estructurada de decisiones, dependencias y capacidad de sostener operación en escenarios exigentes.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Soluciones"
+    title="Soluciones diseñadas para decisiones tecnológicas de alto impacto"
+    lead="Ordenamos la oferta en programas de intervención que conectan diagnóstico, diseño, implementación y evolución."
+    metricLabel="Programas"
+    metricValue="Diagnosticar, acompañar y evolucionar"
+    variant="strategy"
+  />
+
+  <PageIntro paragraphs={[
+    "Las soluciones se estructuran como programas de trabajo, no como servicios aislados. Cada una permite abordar un problema concreto con entregables, criterios y pasos verificables.",
+    "El alcance se define según criticidad, madurez y contexto operativo, manteniendo foco en continuidad y claridad para decidir.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Programas" title="Formas concretas de intervención" />
+      <CapabilityGrid items={solutions} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

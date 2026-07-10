@@ -1,0 +1,9 @@
+---
+import ContentCard from "./ContentCard.astro";
+
+const { items = [] } = Astro.props;
+---
+
+<div class="internal-grid internal-grid--two sector-grid-internal">
+  {items.map((item) => <ContentCard {...item} />)}
+</div>

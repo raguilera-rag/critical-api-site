@@ -1,41 +1,159 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ContentCard from "../components/ContentCard.astro";
+
+const title = "Contacto | Critical API Services";
+const description = "Conversemos sobre tu próximo desafío tecnológico. Contacto para decisiones críticas, continuidad operacional y acompañamiento técnico.";
 ---
 
-<PageLayout
-  title="Contacto | Critical API Services"
-  heading="Contacto seguro"
-  lead="Coordinación inicial bajo criterios de reserva y verificación de canal."
->
-  <div class="grid-2">
-    <section class="surface">
-      <h2>Solicitud inicial</h2>
-      <p>
-        Indica brevemente tu contexto y una ventana horaria. Si aplica,
-        respondemos con un canal de coordinación y los siguientes pasos.
-      </p>
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Contacto"
+    title="Conversemos sobre tu próximo desafío tecnológico"
+    lead="Cuéntanos el contexto, el tipo de necesidad y el nivel de criticidad. Respondemos con una ruta inicial clara y responsable."
+    metricLabel="Canal"
+    metricValue="Coordinación profesional"
+    variant="contact"
+  />
 
-      <div class="cta-row">
-        <a class="btn btn--primary" href="mailto:contacto@criticalapiservices.com?subject=CAS-2026%20%7C%20Solicitud%20inicial">
-          Abrir canal verificado
-        </a>
+  <section class="internal-section">
+    <div class="internal-wrap contact-panel">
+      <div class="content-card">
+        <SectionHeader
+          eyebrow="Solicitud inicial"
+          title="Agenda una conversación"
+          lead="No compartas credenciales, tokens ni información sensible en este formulario. La información técnica se aborda tras verificación de canal."
+        />
+
+        <form class="contact-form" data-contact-form action="/api/contacto" method="post">
+          <input class="contact-form__trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="formStartedAt" value="" />
+          <label>
+            Nombre
+            <input name="nombre" autocomplete="name" maxlength="120" required />
+          </label>
+          <label>
+            Empresa
+            <input name="empresa" autocomplete="organization" maxlength="160" required />
+          </label>
+          <label>
+            Cargo
+            <input name="cargo" autocomplete="organization-title" maxlength="120" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" maxlength="180" required />
+          </label>
+          <label>
+            Teléfono opcional
+            <input name="telefono" type="tel" autocomplete="tel" maxlength="40" />
+          </label>
+          <label>
+            Tipo de necesidad
+            <select name="tipoNecesidad" required>
+              <option value="">Selecciona una opción</option>
+              <option>Diagnóstico tecnológico</option>
+              <option>Continuidad operacional</option>
+              <option>Integración y APIs</option>
+              <option>Modernización tecnológica</option>
+              <option>Gobierno tecnológico</option>
+              <option>Ciberseguridad estratégica</option>
+            </select>
+          </label>
+          <label class="contact-form__wide">
+            Mensaje
+            <textarea name="mensaje" minlength="20" maxlength="3000" required placeholder="Describe el desafío, contexto o ventana de decisión."></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+          <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+        </form>
       </div>
 
-      <p class="muted"><strong>Referencia sugerida:</strong> CAS-2026</p>
-    </section>
+      <aside class="info-list">
+        <ContentCard
+          title="Datos de contacto"
+          body="Canales claros para coordinar una primera conversación."
+          items={[
+            "contacto@criticalapiservices.com",
+            "Santiago, Chile",
+            "Respuesta orientada a definir próximos pasos",
+          ]}
+        />
+        <ContentCard
+          title="Antes de escribir"
+          body="Para proteger la conversación inicial, evita compartir información sensible antes de establecer un canal verificado."
+          items={[
+            "Sin credenciales ni llaves",
+            "Sin datos personales innecesarios",
+            "Contexto suficiente para entender criticidad",
+          ]}
+        />
+      </aside>
+    </div>
+  </section>
 
-    <section class="surface">
-      <h2>Buenas prácticas</h2>
-      <ul class="bullets">
-        <li>No compartas credenciales, llaves, tokens ni información sensible por correo.</li>
-        <li>La información técnica se aborda tras verificación y acuerdo de confidencialidad.</li>
-        <li>Si requieres urgencia operacional, indícalo en el asunto.</li>
-      </ul>
-      <p class="muted">
-        <strong>Nota:</strong> La verificación de identidad/canal se realiza caso a caso.
-      </p>
-    </section>
-  </div>
+  <script is:inline>
+    const form = document.querySelector("[data-contact-form]");
+    const status = document.querySelector("[data-contact-status]");
 
-  </div>
-</PageLayout>
+    if (form && status) {
+      const startedAt = form.querySelector('input[name="formStartedAt"]');
+      if (startedAt) startedAt.value = String(Date.now());
+
+      const setStatus = (message, type) => {
+        status.textContent = message;
+        status.dataset.state = type;
+      };
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const button = form.querySelector('button[type="submit"]');
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        button.disabled = true;
+        button.textContent = "Enviando...";
+        setStatus("", "");
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await response.json().catch(() => null);
+
+          if (response.ok && result?.ok) {
+            setStatus(result.message || "Solicitud enviada correctamente.", "success");
+            form.reset();
+            if (startedAt) startedAt.value = String(Date.now());
+            return;
+          }
+
+          setStatus(
+            result?.message ||
+              "No pudimos enviar la solicitud. Inténtalo nuevamente o escribe a contacto@criticalapiservices.com.",
+            "error",
+          );
+        } catch {
+          setStatus(
+            "No pudimos enviar la solicitud. Inténtalo nuevamente o escribe a contacto@criticalapiservices.com.",
+            "error",
+          );
+        } finally {
+          button.disabled = false;
+          button.textContent = "Enviar solicitud";
+        }
+      });
+    }
+  </script>
+</BaseLayout>

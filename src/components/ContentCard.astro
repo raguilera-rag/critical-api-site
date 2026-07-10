@@ -1,0 +1,14 @@
+---
+const { title, body, items = [], label } = Astro.props;
+---
+
+<article class="content-card">
+  {label && <span class="content-card__label">{label}</span>}
+  <h3>{title}</h3>
+  {body && <p>{body}</p>}
+  {items.length > 0 && (
+    <ul>
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+  )}
+</article>

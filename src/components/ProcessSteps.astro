@@ -1,0 +1,13 @@
+---
+const { steps = [] } = Astro.props;
+---
+
+<ol class="process-steps">
+  {steps.map((step, index) => (
+    <li>
+      <span>{String(index + 1).padStart(2, "0")}</span>
+      <strong>{step.title ?? step}</strong>
+      {step.body && <p>{step.body}</p>}
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,10 @@
+---
+const { type, title, body, action = "Ver recurso" } = Astro.props;
+---
+
+<article class="resource-item-card">
+  <span>{type}</span>
+  <h3>{title}</h3>
+  <p>{body}</p>
+  <strong>{action} -></strong>
+</article>

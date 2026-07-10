@@ -1,104 +1,48 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Seguridad y confianza | Critical API Services";
+const description = "Principios de seguridad, gobernanza y confianza para infraestructuras digitales críticas.";
+
+const principles = [
+  {
+    title: "Seguridad por diseño",
+    body: "La seguridad se incorpora desde arquitectura, exposición de servicios y criterios de operación.",
+  },
+  {
+    title: "Continuidad como requisito",
+    body: "La resiliencia y disponibilidad se tratan como condiciones de confianza, no como anexos técnicos.",
+  },
+  {
+    title: "Control y mínima exposición",
+    body: "Las intervenciones buscan claridad de acceso, trazabilidad y reducción de superficie innecesaria.",
+  },
+];
 ---
 
-<BaseLayout title="Security & Trust | Critical API Services">
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Confianza"
+    title="Seguridad y gobernanza para entornos críticos"
+    lead="Operamos bajo principios que fortalecen resiliencia, integridad y control en decisiones tecnológicas sensibles."
+    metricLabel="Principio"
+    metricValue="Confianza basada en control"
+    variant="security"
+  />
 
-<section class="container">
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Principios" title="Cómo entendemos seguridad y confianza" />
+      <CapabilityGrid items={principles} />
+    </div>
+  </section>
 
-<h1>Security & Trust</h1>
-
-<p style="opacity:.7;margin-bottom:40px">
-This page is available in English and Spanish. English version appears first.
-</p>
-
-<p>
-Critical API Services operates under principles designed to ensure the resilience,
-integrity and governance of critical digital infrastructure.
-</p>
-
-<h2>Security Principles</h2>
-
-<ul>
-<li>Security by design in system architecture</li>
-<li>Operational continuity as a primary requirement</li>
-<li>Controlled access and minimal exposure</li>
-<li>Traceability across critical components</li>
-</ul>
-
-<h2>Infrastructure Governance</h2>
-
-<p>
-Our work focuses on technical decision architecture, critical platform integration,
-and operational governance in environments where service interruption is not acceptable.
-</p>
-
-<h2>Responsible Disclosure</h2>
-
-<p>
-Security researchers can report vulnerabilities responsibly through the channel
-specified in our disclosure policy.
-</p>
-
-<p>
-<a href="/security">View Security Disclosure Policy →</a>
-</p>
-
-<h2>Contact</h2>
-
-<p>
-Security contact: <strong>security@criticalapiservices.com</strong>
-</p>
-
-<hr style="margin:60px 0; opacity:.15">
-
-<h1>Seguridad y Confianza</h1>
-
-<p>
-Critical API Services opera bajo principios diseñados para asegurar la resiliencia,
-integridad y gobernanza técnica de infraestructuras digitales de alta criticidad.
-</p>
-
-<p>
-Nuestro enfoque se basa en arquitectura de decisión técnica, continuidad operativa
-y control estructurado de sistemas donde la interrupción del servicio no es una opción.
-</p>
-
-<h2>Principios de Seguridad</h2>
-
-<ul>
-<li>Seguridad integrada desde el diseño de arquitectura.</li>
-<li>Continuidad operativa como requisito fundamental.</li>
-<li>Control de accesos y mínima exposición.</li>
-<li>Trazabilidad en componentes críticos.</li>
-</ul>
-
-<h2>Gobernanza de Infraestructura</h2>
-
-<p>
-Las intervenciones técnicas realizadas por Critical API Services se enfocan en
-arquitectura de decisión, integración de plataformas críticas y gobernanza
-operacional en entornos donde la interrupción del servicio no es aceptable.
-</p>
-
-<h2>Divulgación Responsable</h2>
-
-<p>
-Investigadores de seguridad pueden reportar vulnerabilidades de forma responsable
-a través del canal definido en nuestra política de divulgación.
-</p>
-
-<p>
-<a href="/security">Ver política de divulgación de seguridad →</a>
-</p>
-
-<h2>Contacto de Seguridad</h2>
-
-<p>
-Contacto para reportes de seguridad:
-<strong>security@criticalapiservices.com</strong>
-</p>
-
-</section>
-
+  <CTASection
+    title="¿Necesitas revisar exposición o gobierno de una plataforma crítica?"
+    lead="Conversemos con el nivel de reserva que corresponde."
+  />
 </BaseLayout>

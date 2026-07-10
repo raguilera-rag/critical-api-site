@@ -1,52 +1,48 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Confidencialidad | Critical API Services";
+const description = "Principios de confidencialidad, mínima exposición y trazabilidad para conversaciones tecnológicas críticas.";
+
+const principles = [
+  {
+    title: "Mínima exposición",
+    body: "La información se solicita y comparte solo cuando es necesaria para sostener la decisión técnica.",
+  },
+  {
+    title: "Proporcionalidad",
+    body: "El nivel de detalle se ajusta al contexto, acuerdos institucionales y requerimientos aplicables.",
+  },
+  {
+    title: "Trazabilidad y custodia",
+    body: "Los criterios, análisis y entregables se documentan de forma estructurada y responsable.",
+  },
+];
 ---
 
-<PageLayout
-  title="Confidencialidad | Critical API Services"
-  heading="Principios de confidencialidad"
-  lead="Reserva estructural por diseño: se analiza y comparte exclusivamente lo estrictamente necesario."
->
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Confidencialidad"
+    title="Reserva estructural por diseño"
+    lead="Las conversaciones técnicas se gestionan bajo criterios de prudencia, segmentación y mínima exposición."
+    metricLabel="Criterio"
+    metricValue="Compartir solo lo necesario"
+    variant="security"
+  />
 
-  <div class="stack">
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Principios" title="Cómo protegemos la conversación técnica" />
+      <CapabilityGrid items={principles} />
+    </div>
+  </section>
 
-    <section class="surface">
-      <h2>Mínima exposición</h2>
-      <p>
-        La información, los contextos y las decisiones se gestionan bajo criterios
-        de prudencia estructural, segregación funcional y mínima exposición.
-      </p>
-      <p>
-        Se analiza y comparte únicamente aquello que resulta estrictamente necesario
-        para sostener la decisión técnica.
-      </p>
-    </section>
-
-    <section class="surface">
-      <h2>Proporcionalidad</h2>
-      <p>
-        El nivel de detalle técnico se define de forma proporcional al contexto,
-        a los acuerdos institucionales y a los requerimientos regulatorios aplicables.
-      </p>
-      <p>
-        Cada intervención mantiene trazabilidad, control y coherencia con el marco
-        de gobernanza correspondiente.
-      </p>
-    </section>
-
-    <section class="surface">
-      <h2>Trazabilidad y custodia técnica</h2>
-      <p>
-        Las decisiones, criterios y análisis se documentan de forma estructurada,
-        asegurando trazabilidad técnica y coherencia con los marcos de gobernanza aplicables.
-      </p>
-      <p>
-        La custodia de la información y de los entregables se mantiene bajo principios
-        de control, segmentación y responsabilidad institucional.
-      </p>
-    </section>
-
-
-  </div>
-
-</PageLayout>
+  <CTASection
+    title="¿Necesitas una conversación con reserva desde el primer contacto?"
+    lead="Coordinemos el canal adecuado."
+  />
+</BaseLayout>

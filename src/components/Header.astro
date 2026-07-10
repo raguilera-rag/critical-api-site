@@ -1,24 +1,113 @@
 ---
+import BrandLogo from "./BrandLogo.astro";
+
 const nav = [
-  { href: "/", label: "Inicio" },
-  { href: "/enfoque", label: "Enfoque" },
-  { href: "/ambitos", label: "Ámbitos" },
-  { href: "/confidencialidad", label: "Confidencialidad" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/quienes-somos", label: "Quiénes Somos" },
+  { href: "/capacidades", label: "Capacidades" },
+  { href: "/sectores", label: "Sectores" },
+  { href: "/soluciones", label: "Soluciones" },
+  { href: "/casos-de-uso", label: "Casos de Uso" },
+  { href: "/recursos", label: "Recursos" },
 ];
 ---
 
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Critical API Services">
-      <span class="brand-mark diamond"></span>
-      <span class="brand-text">Critical API Services</span>
+      <BrandLogo tone="light" />
     </a>
 
-    <nav class="nav" aria-label="Navegación principal">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-controls="site-nav"
+      aria-expanded="false"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label="Navegación principal">
+      <a class="nav-link nav-link--hero" href="/#inicio" hidden>Volver al inicio</a>
       {nav.map((item) => (
         <a class="nav-link" href={item.href}>{item.label}</a>
       ))}
+      <a class="nav-link nav-link--contact" href="/contacto">Contacto</a>
     </nav>
+
+    <a class="header-cta" href="/contacto">Contacto</a>
   </div>
 </header>
+
+<script is:inline>
+  const header = document.querySelector(".site-header");
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector("#site-nav");
+  const heroLink = nav?.querySelector(".nav-link--hero");
+
+  if (header && toggle && nav) {
+    const setOpen = (open) => {
+      header.classList.toggle("is-menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    };
+
+    const updateHeroLink = () => {
+      const hero = document.querySelector("#inicio");
+      if (!heroLink) return;
+
+      if (!hero) {
+        heroLink.toggleAttribute("hidden", window.location.pathname === "/");
+        return;
+      }
+
+      const heroBounds = hero.getBoundingClientRect();
+      const headerHeight = header.getBoundingClientRect().height;
+      const isViewingHero = heroBounds.bottom > headerHeight + 32;
+      heroLink.toggleAttribute("hidden", isViewingHero);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", updateHeroLink, { once: true });
+    } else {
+      updateHeroLink();
+    }
+
+    toggle.addEventListener("click", () => {
+      updateHeroLink();
+      setOpen(!header.classList.contains("is-menu-open"));
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        const target = href?.startsWith("#") ? document.querySelector(href) : null;
+
+        if (target) {
+          event.preventDefault();
+
+          const headerHeight = header.getBoundingClientRect().height;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY;
+          const scrollTop = href === "#inicio" ? 0 : targetTop - headerHeight - 14;
+
+          setOpen(false);
+          window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+          window.history.pushState(null, "", href);
+          updateHeroLink();
+          return;
+        }
+
+        setOpen(false);
+      });
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+
+    window.addEventListener("scroll", updateHeroLink, { passive: true });
+    window.addEventListener("resize", updateHeroLink);
+  }
+</script>

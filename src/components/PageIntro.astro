@@ -1,0 +1,9 @@
+---
+const { paragraphs = [] } = Astro.props;
+---
+
+<section class="internal-section page-intro">
+  <div class="internal-wrap page-intro__grid">
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</section>

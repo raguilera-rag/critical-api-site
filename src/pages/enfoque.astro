@@ -1,33 +1,104 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Enfoque de intervención | Critical API Services";
+const description = "Acompañamiento estratégico para decisiones tecnológicas críticas, con foco en continuidad operacional, criterio técnico e independencia.";
+
+const steps = [
+  { title: "Comprender", body: "Levantamos contexto, objetivos, restricciones y riesgos relevantes." },
+  { title: "Analizar", body: "Ordenamos dependencias, escenarios y brechas que afectan la decisión." },
+  { title: "Diseñar", body: "Definimos alternativas, criterios de arquitectura y ruta de ejecución." },
+  { title: "Implementar", body: "Acompañamos la puesta en marcha con control y trazabilidad." },
+  { title: "Validar", body: "Revisamos resultados, continuidad y coherencia con el objetivo." },
+  { title: "Evolucionar", body: "Ajustamos capacidades para sostener valor más allá del proyecto." },
+];
+
+const principles = [
+  {
+    title: "Criterio antes que tecnología",
+    body: "La decisión se construye desde el contexto del negocio, los riesgos operacionales y la capacidad real de ejecución.",
+  },
+  {
+    title: "Independencia tecnológica",
+    body: "Evaluamos opciones sin depender de fabricantes, modas o arquitecturas impuestas por terceros.",
+  },
+  {
+    title: "Continuidad como requisito",
+    body: "Cada recomendación considera impacto operacional, dependencia entre sistemas y capacidad de recuperación.",
+  },
+];
+
+const differences = [
+  {
+    label: "01",
+    title: "Acompañamiento ejecutivo",
+    body: "Traducimos complejidad técnica en decisiones claras para equipos directivos y responsables de operación.",
+  },
+  {
+    label: "02",
+    title: "Ejecución con control",
+    body: "Diseñamos rutas de trabajo que reducen incertidumbre, evitan saltos innecesarios y protegen continuidad.",
+  },
+  {
+    label: "03",
+    title: "Mirada de punta a punta",
+    body: "Conectamos arquitectura, integración, gobierno, seguridad y operación en una misma conversación técnica.",
+  },
+];
 ---
 
-<PageLayout
-  title="Enfoque | Critical API Services"
-  heading="Enfoque de intervención"
-  lead="Acompañamiento estratégico para respaldar decisiones, sin exponer implementación ni detalles sensibles."
->
-  <div class="stack">
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Cómo trabajamos"
+    title="Nuestro enfoque"
+    lead="Acompañamos decisiones tecnológicas críticas con criterio, independencia y foco en continuidad operacional."
+    metricLabel="Método"
+    metricValue="Comprender, decidir y evolucionar"
+    variant="strategy"
+  />
 
-<section class="surface">
-  <h2>Marco de intervención</h2>
-  <p>
-    Intervención estratégica independiente orientada al criterio técnico, a la continuidad operacional y al control institucional en entornos de alta criticidad.
-  </p>
-  <p>
-    No ejecutamos implementaciones: estructuramos marcos de decisión.
-  </p>
-</section>
+  <PageIntro paragraphs={[
+    "Nuestro trabajo parte de una premisa simple: en entornos críticos, una decisión tecnológica no puede evaluarse solo por funcionalidad. Debe considerar continuidad, riesgo, gobernanza, dependencias y capacidad de implementación.",
+    "Acompañamos a los equipos responsables desde el diagnóstico hasta la evolución de la solución, aportando claridad técnica y una mirada ejecutiva para decidir con menos incertidumbre.",
+  ]} />
 
-<section class="surface">
-  <h2>Alcance</h2>
-  <p>
-    El alcance se define caso a caso, mediante entregables acotados y trazables, minimizando exposición operativa y asegurando claridad técnica.
-  </p>
-  <p>
-    Ajustado a contexto regulatorio, técnico y organizacional.
-  </p>
-</section>
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Ciclo de acompañamiento"
+        title="Un proceso ordenado para decisiones de alto impacto"
+        lead="El método mantiene trazabilidad sin transformar la intervención en burocracia."
+      />
+      <ProcessSteps steps={steps} />
+    </div>
+  </section>
 
-  </div>
-</PageLayout>
+  <section class="internal-section">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Principios"
+        title="Criterios que ordenan la intervención"
+      />
+      <CapabilityGrid items={principles} />
+    </div>
+  </section>
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Diferenciación"
+        title="Qué nos diferencia"
+        lead="No agregamos ruido técnico: estructuramos decisiones, fortalecemos capacidades y cuidamos la operación."
+      />
+      <CapabilityGrid items={differences} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

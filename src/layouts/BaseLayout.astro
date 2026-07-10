@@ -3,7 +3,11 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const { title = "Critical API Services", robots = "index, follow" } = Astro.props;
+const {
+  title = "Critical API Services",
+  description = "Consultoría técnica especializada en arquitectura de decisión, continuidad operativa y gobernanza en infraestructuras críticas.",
+  robots = "index, follow",
+} = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.com");
 ---
@@ -38,7 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 </script>
 
 <!-- SEO description -->
-<meta name="description" content="Consultoría técnica especializada en arquitectura de decisión, continuidad operativa y gobernanza en infraestructuras críticas." />
+<meta name="description" content={description} />
 
 <!-- Robots -->
 <meta name="robots" content={robots} />
@@ -47,9 +51,9 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Critical API Services" />
-<meta property="og:description" content="Consultoría técnica especializada en arquitectura de decisión, continuidad operativa y gobernanza en infraestructuras críticas de alta disponibilidad." />
-<meta property="og:url" content="https://criticalapiservices.com" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Critical API Services" />
 <meta property="og:image" content="https://criticalapiservices.com/og-image.png" />
@@ -87,59 +91,6 @@ const canonicalURL = new URL(Astro.url.pathname, "https://criticalapiservices.co
 <Footer />
 
 <!-- CAS-origin-marker: criticalapiservices.com | RaA-2026-site -->
-
-<script>
-let mx = 70;
-let my = 30;
-let tx = 70;
-let ty = 30;
-
-document.addEventListener("mousemove", (e) => {
-  const cards = document.querySelectorAll<HTMLElement>(".mediaCard");
-
-  cards.forEach(card => {
-    const rect = card.getBoundingClientRect();
-
-    tx = ((e.clientX - rect.left) / rect.width) * 100;
-    ty = ((e.clientY - rect.top) / rect.height) * 100;
-  });
-});
-
-function animateGlow(){
-  mx += (tx - mx) * 0.08;
-  my += (ty - my) * 0.08;
-
-  const cards = document.querySelectorAll<HTMLElement>(".mediaCard");
-
-  cards.forEach(card=>{
-    card.style.setProperty("--mx", mx + "%");
-    card.style.setProperty("--my", my + "%");
-  });
-
-  requestAnimationFrame(animateGlow);
-}
-
-animateGlow();
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  const hero = document.querySelector('.hero__media');
-  const flows = document.querySelectorAll('.arch-flow animateMotion');
-
-  if (!hero || flows.length === 0) return;
-
-  hero.addEventListener('mouseenter', () => {
-    flows.forEach(f => (f as any).endElement());
-  });
-
-  hero.addEventListener('mouseleave', () => {
-    flows.forEach(f => (f as any).endElement());
-  });
-
-});
-</script>
 
 </body>
 </html>

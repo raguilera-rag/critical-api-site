@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Capacidades | Critical API Services";
+const description = "Capacidades en arquitectura, continuidad operacional, integración, gobierno tecnológico, modernización y ciberseguridad estratégica.";
+
+const capabilities = [
+  {
+    title: "Arquitectura y diseño",
+    body: "Diseño de estructuras tecnológicas sólidas, escalables y alineadas al negocio.",
+    items: ["Decisiones de arquitectura", "Dependencias críticas", "Resultado: claridad y ruta técnica"],
+  },
+  {
+    title: "Continuidad operacional",
+    body: "Evaluación de disponibilidad, resiliencia y capacidad de recuperación de procesos esenciales.",
+    items: ["Riesgo de interrupción", "Puntos únicos de falla", "Resultado: operación más preparada"],
+  },
+  {
+    title: "Integración y APIs",
+    body: "Conexión segura y gobernada de sistemas, datos y servicios críticos.",
+    items: ["APIs sin control", "Flujos no trazables", "Resultado: interoperabilidad confiable"],
+  },
+  {
+    title: "Gobierno tecnológico",
+    body: "Definición de criterios, controles y responsabilidades para sostener decisiones tecnológicas.",
+    items: ["Roles difusos", "Falta de evidencia", "Resultado: control y trazabilidad"],
+  },
+  {
+    title: "Modernización tecnológica",
+    body: "Evolución de plataformas existentes con foco en continuidad y reducción de riesgo.",
+    items: ["Legacy crítico", "Obsolescencia", "Resultado: evolución sin interrupción"],
+  },
+  {
+    title: "Ciberseguridad estratégica",
+    body: "Protección de arquitectura, exposición técnica y decisiones desde una perspectiva de riesgo.",
+    items: ["Superficie expuesta", "Accesos críticos", "Resultado: seguridad integrada a la operación"],
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Capacidades"
+    title="Capacidades para entornos donde la continuidad es crítica"
+    lead="Combinamos arquitectura, integración, gobierno, modernización y seguridad para resolver desafíos tecnológicos con impacto operacional."
+    metricLabel="Oferta"
+    metricValue="Seis capacidades integradas"
+    variant="systems"
+  />
+
+  <PageIntro paragraphs={[
+    "Las capacidades de Critical API Services están diseñadas para organizaciones donde los sistemas sostienen procesos esenciales y las decisiones deben considerar impacto real.",
+    "Cada capacidad puede abordarse de forma independiente, pero su mayor valor aparece cuando se conectan como parte de una ruta de evolución tecnológica controlada.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Mapa de capacidades"
+        title="Qué abordamos y qué resultado buscamos"
+      />
+      <CapabilityGrid items={capabilities} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

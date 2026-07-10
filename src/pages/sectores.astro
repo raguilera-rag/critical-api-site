@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import SectorGrid from "../components/SectorGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Sectores | Critical API Services";
+const description = "Experiencia en sectores donde la operación no puede detenerse: transporte, energía, sector público, salud, finanzas y telecomunicaciones.";
+
+const sectors = [
+  {
+    title: "Transporte y logística",
+    body: "La continuidad afecta coordinación, trazabilidad y cumplimiento. Aportamos arquitectura e integración para operaciones distribuidas.",
+  },
+  {
+    title: "Energía e infraestructura",
+    body: "Entornos con alta dependencia operacional requieren control, resiliencia y decisiones que minimicen exposición.",
+  },
+  {
+    title: "Sector público",
+    body: "Sistemas institucionales exigen gobernanza, trazabilidad, continuidad y claridad entre múltiples actores.",
+  },
+  {
+    title: "Salud",
+    body: "Procesos clínicos y administrativos dependen de información disponible, segura y correctamente integrada.",
+  },
+  {
+    title: "Servicios financieros",
+    body: "La disponibilidad, seguridad y evidencia operacional son condiciones necesarias para sostener confianza.",
+  },
+  {
+    title: "Telecomunicaciones y tecnología",
+    body: "Plataformas de alto volumen requieren arquitectura escalable, gobierno técnico y evolución controlada.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Sectores"
+    title="Experiencia en sectores donde la operación no puede detenerse"
+    lead="Aportamos criterio técnico en industrias donde continuidad, trazabilidad y resiliencia son parte del negocio."
+    metricLabel="Foco"
+    metricValue="Operaciones esenciales"
+    variant="governance"
+  />
+
+  <PageIntro paragraphs={[
+    "Los sectores críticos comparten un desafío: la tecnología sostiene procesos visibles e invisibles que deben funcionar incluso bajo presión.",
+    "Nuestra intervención se adapta al contexto de cada industria, pero mantiene una misma lógica: reducir incertidumbre, proteger continuidad y fortalecer capacidades.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Experiencia sectorial" title="Dónde la continuidad es una condición de confianza" />
+      <SectorGrid items={sectors} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

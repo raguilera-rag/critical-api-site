@@ -1,55 +1,259 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroSplit from "../components/HeroSplit.astro";
-import SectionSplit from "../components/SectionSplit.astro";
-import CardsGrid from "../components/CardsGrid.astro";
-import CTA from "../components/CTA.astro";
 
-const cards = [
+const strengths = [
+  "Enfoque en continuidad",
+  "Independencia tecnológica",
+  "Experiencia en entornos críticos",
+  "Acompañamiento de punta a punta",
+];
+
+const process = ["Comprender", "Diseñar", "Implementar", "Evolucionar"];
+
+const capabilities = [
   {
-    title: "Enfoque de intervención",
-    body: "Criterio, gobernanza y continuidad operacional, con mínima exposición y claridad en decisiones.",
-    href: "/enfoque",
+    title: "Arquitectura y Diseño",
+    body: "Diseñamos soluciones sólidas, escalables y alineadas al negocio.",
+    href: "/capacidades",
+    icon: "layers",
   },
   {
-    title: "Ámbitos de intervención",
-    body: "Plataformas críticas, mensajería, integración, alta disponibilidad y entornos con trazabilidad.",
+    title: "Continuidad Operacional",
+    body: "Aseguramos disponibilidad y resiliencia de tus operaciones.",
     href: "/ambitos",
+    icon: "shield",
   },
   {
-    title: "Principios de confidencialidad",
-    body: "Reserva por diseño, segregación y trazabilidad: solicitar y compartir solo lo mínimo necesario.",
-    href: "/confidencialidad",
+    title: "Integración y APIs",
+    body: "Conectamos sistemas y datos para crear valor de forma segura.",
+    href: "/capacidades",
+    icon: "nodes",
+  },
+  {
+    title: "Gobierno Tecnológico",
+    body: "Establecemos marcos de control, gestión y mejora continua.",
+    href: "/capacidades",
+    icon: "bank",
+  },
+  {
+    title: "Modernización Tecnológica",
+    body: "Evolucionamos plataformas para impulsar agilidad y eficiencia.",
+    href: "/soluciones",
+    icon: "cloud",
+  },
+  {
+    title: "Ciberseguridad Estratégica",
+    body: "Protegemos lo crítico con una visión de riesgo y negocio.",
+    href: "/capacidades",
+    icon: "lock",
   },
 ];
+
+const sectors = [
+  ["Transporte y Logística", "truck"],
+  ["Energía e Infraestructura", "bolt"],
+  ["Sector Público", "bank"],
+  ["Salud", "heart"],
+  ["Servicios Financieros", "document"],
+  ["Telecomunicaciones y Tecnología", "signal"],
+];
+
+const cases = [
+  {
+    tag: "Continuidad Operacional",
+    title: "Alta disponibilidad en plataforma crítica",
+    body: "Diseñamos e implementamos una arquitectura activa-activa que eliminó puntos únicos de falla.",
+  },
+  {
+    tag: "Integración y APIs",
+    title: "Integración segura de sistemas críticos",
+    body: "Conectamos más de 30 sistemas heterogéneos con una capa de APIs segura y escalable.",
+  },
+  {
+    tag: "Modernización",
+    title: "Modernización sin interrumpir",
+    body: "Migramos una plataforma legacy a una arquitectura moderna sin afectar la operación del negocio.",
+  },
+];
+
+const resources = [
+  ["ARTÍCULO", "¿Qué es la continuidad operacional y por qué importa?", "Leer más", "article"],
+  ["GUÍA", "Checklist para evaluar la resiliencia de tu operación", "Descargar", "check"],
+  ["WHITEPAPER", "Arquitectura resiliente: principios y buenas prácticas", "Descargar", "paper"],
+  ["VIDEO", "Cómo acompañamos decisiones críticas", "Ver video", "play"],
+];
+
+const iconPaths = {
+  layers: `<path d="M12 3 3 7l9 4 9-4-9-4Z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/>`,
+  shield: `<path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-5"/>`,
+  nodes: `<circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><path d="M9.5 8.5 11 14"/><path d="m14.5 8.5-1.5 5.5"/>`,
+  bank: `<path d="M3 10h18"/><path d="m5 10 7-6 7 6"/><path d="M6 10v8"/><path d="M10 10v8"/><path d="M14 10v8"/><path d="M18 10v8"/><path d="M4 18h16"/>`,
+  cloud: `<path d="M17 18H8a5 5 0 1 1 1-9 6 6 0 0 1 11 3 3 3 0 0 1-3 6Z"/>`,
+  lock: `<rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/>`,
+  truck: `<path d="M3 7h10v8H3z"/><path d="M13 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>`,
+  bolt: `<path d="m13 2-8 12h6l-1 8 8-12h-6l1-8Z"/>`,
+  heart: `<path d="M20 8c0 6-8 11-8 11S4 14 4 8a4 4 0 0 1 7-2 4 4 0 0 1 9 2Z"/>`,
+  document: `<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/>`,
+  signal: `<path d="M5 12a10 10 0 0 1 14 0"/><path d="M8 15a6 6 0 0 1 8 0"/><path d="M11 18a2 2 0 0 1 2 0"/>`,
+  article: `<path d="M5 4h10l4 4v12H5z"/><path d="M15 4v5h5"/><path d="M8 13h8"/><path d="M8 17h6"/>`,
+  check: `<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6"/><path d="m9 13 2 2 4-5"/>`,
+  paper: `<path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6"/><path d="M9 15h6"/><path d="M9 19h4"/>`,
+  play: `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3Z"/>`,
+  target: `<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>`,
+  pencil: `<path d="m4 20 4-1 11-11-3-3L5 16l-1 4Z"/><path d="m14 6 3 3"/>`,
+  gear: `<circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/><path d="m4.9 4.9 2.1 2.1"/><path d="m17 17 2.1 2.1"/><path d="M2 12h3"/><path d="M19 12h3"/><path d="m4.9 19.1 2.1-2.1"/><path d="m17 7 2.1-2.1"/>`,
+  trend: `<path d="M4 17 10 11l4 4 6-8"/><path d="M15 7h5v5"/>`,
+};
+
+const icon = (name) => iconPaths[name] ?? iconPaths.layers;
 ---
 
 <BaseLayout title="Critical API Services">
+  <section class="hero" id="inicio">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <h1>Decisiones tecnológicas críticas. Resultados que importan.</h1>
+        <p>
+          Acompañamos a organizaciones en el análisis, diseño, implementación
+          y evolución de soluciones tecnológicas donde la continuidad
+          operacional es clave para el negocio.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/contacto">Conversemos sobre tu desafío</a>
+          <a class="btn btn--secondary" href="#propuesta">
+            Ver cómo trabajamos
+            <span class="btn__circle" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero__trust">
+        {strengths.map((item) => (
+          <div class="trust-item">
+            <span class="trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><Fragment set:html={icon("gear")} /></svg>
+            </span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <!-- HERO -->
-  <HeroSplit />
+  <section class="value-section section-band" id="propuesta">
+    <div class="section-inner value-grid">
+      <div class="section-copy">
+        <h2>No somos un proveedor.<br /><span>Somos tu socio técnico.</span></h2>
+        <p>
+          Ayudamos a reducir la incertidumbre y fortalecer la capacidad de
+          decisión en entornos tecnológicos complejos. Desde el diagnóstico
+          hasta la evolución, estamos contigo.
+        </p>
+      </div>
+      <div class="process-strip" aria-label="Ciclo de acompañamiento">
+        {process.map((item, index) => (
+          <>
+            <div class="process-step">
+              <span class="process-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <Fragment set:html={icon(["target", "pencil", "gear", "trend"][index])} />
+                </svg>
+              </span>
+              <strong>{item}</strong>
+            </div>
+            {index < process.length - 1 && <span class="process-arrow" aria-hidden="true">+</span>}
+          </>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <!-- SECCIÓN 1 -->
-  <SectionSplit
-    title="Marco de decisión y continuidad operacional"
-    body="Definición estructurada de criterios técnicos, evaluación de escenarios y soporte estratégico en sistemas donde la interrupción no es una opción."
-    href="/enfoque"
-    linkLabel="Ver enfoque"
-  />
+  <section class="capabilities section-inner" id="capacidades">
+    <div class="section-heading">
+      <h2>¿Qué desafíos resolvemos?</h2>
+      <p>Nuestras capacidades principales</p>
+    </div>
+    <div class="capability-grid">
+      {capabilities.map((item) => (
+        <a class="capability-card" href={item.href}>
+          <span class="line-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><Fragment set:html={icon(item.icon)} /></svg>
+          </span>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+          <span class="card-link">Saber más <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
 
-  <!-- SECCIÓN 2 -->
-  <SectionSplit
-    title="Riesgo estructural y resiliencia institucional"
-    body="Análisis de dependencias, umbrales críticos y arquitectura de escenarios. Entregables acotados, trazables y consistentes con marcos regulatorios y operacionales."
-    reverse={true}
-    href="/ambitos"
-    linkLabel="Ver ámbitos"
-  />
+  <section class="sectors section-band" id="sectores">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Experiencia en sectores donde la continuidad es crítica</h2>
+      </div>
+      <div class="sector-grid">
+        {sectors.map(([name, iconName]) => (
+          <div class="sector-item">
+            <span class="line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><Fragment set:html={icon(iconName)} /></svg>
+            </span>
+            <strong>{name}</strong>
+          </div>
+        ))}
+      </div>
+      <a class="btn btn--outline" href="/ambitos">Ver todos los sectores</a>
+    </div>
+  </section>
 
-  <!-- TARJETAS -->
-  <CardsGrid items={cards} />
+  <section class="cases section-inner" id="casos">
+    <div class="cases-intro">
+      <h2>Casos de uso destacados</h2>
+      <p>Problemas reales. Resultados reales.</p>
+      <a class="btn btn--outline" href="/ambitos">Ver más casos de uso</a>
+    </div>
+    <div class="case-grid">
+      {cases.map((item) => (
+        <a class="case-card" href="/ambitos">
+          <span>{item.tag}</span>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+          <strong>Ver caso <span aria-hidden="true">→</span></strong>
+        </a>
+      ))}
+    </div>
+  </section>
 
-  <!-- CALL TO ACTION -->
-  <CTA />
+  <section class="resources section-band" id="recursos">
+    <div class="section-inner">
+      <div class="section-heading">
+        <h2>Recursos para tomar mejores decisiones</h2>
+      </div>
+      <div class="resource-grid">
+        {resources.map(([type, title, action, iconName]) => (
+          <a class="resource-card" href="/enfoque">
+            <span class="line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><Fragment set:html={icon(iconName)} /></svg>
+            </span>
+            <span class="resource-type">{type}</span>
+            <h3>{title}</h3>
+            <strong>{action} <span aria-hidden="true">→</span></strong>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
+  <section class="final-cta" id="contacto">
+    <div class="section-inner final-cta__inner">
+      <div>
+        <h2>Cada decisión tecnológica tiene un impacto en tu negocio.</h2>
+        <p>Hablemos sobre tu próximo paso.</p>
+      </div>
+      <div class="final-cta__actions">
+        <a class="btn btn--light" href="/contacto">Agendar una reunión</a>
+        <span>o escríbenos a contacto@criticalapiservices.com</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Recursos | Critical API Services";
+const description = "Recursos para tomar mejores decisiones sobre continuidad operacional, arquitectura crítica, integración, gobierno y resiliencia.";
+
+const resources = [
+  {
+    type: "Artículo",
+    title: "Qué es la continuidad operacional y por qué importa",
+    body: "Una lectura ejecutiva para entender continuidad más allá de disponibilidad técnica.",
+    action: "Leer más",
+  },
+  {
+    type: "Guía",
+    title: "Checklist para evaluar la resiliencia de tu operación",
+    body: "Preguntas clave para ordenar brechas, dependencias y prioridades.",
+    action: "Descargar",
+  },
+  {
+    type: "Whitepaper",
+    title: "Arquitectura resiliente: principios y buenas prácticas",
+    body: "Criterios para diseñar plataformas que sostengan operación bajo presión.",
+    action: "Descargar",
+  },
+  {
+    type: "Video",
+    title: "Cómo acompañamos decisiones críticas",
+    body: "Una explicación breve del enfoque de intervención y sus etapas.",
+    action: "Ver video",
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Recursos"
+    title="Recursos para tomar mejores decisiones"
+    lead="Contenido diseñado para orientar conversaciones ejecutivas y técnicas sobre continuidad, arquitectura y gobierno."
+    metricLabel="Contenido"
+    metricValue="Guías, artículos y herramientas"
+    variant="resources"
+  />
+
+  <PageIntro paragraphs={[
+    "Los recursos reúnen ideas, marcos y herramientas para reconocer riesgos, ordenar decisiones y fortalecer conversaciones internas.",
+    "Algunos contenidos están planteados como placeholders editoriales para mantener una estructura profesional mientras se publica material definitivo.",
+  ]} />
+
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader eyebrow="Biblioteca" title="Contenido de valor para equipos responsables" />
+      <div class="resource-list">
+        {resources.map((resource) => <ResourceCard {...resource} />)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

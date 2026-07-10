@@ -1,34 +1,124 @@
 ---
-import PageLayout from "../layouts/PageLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InternalHero from "../components/InternalHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import CapabilityGrid from "../components/CapabilityGrid.astro";
+import SectorGrid from "../components/SectorGrid.astro";
+import CTASection from "../components/CTASection.astro";
+
+const title = "Ámbitos de intervención | Critical API Services";
+const description = "Intervenimos en arquitectura, continuidad operacional, integración, gobierno tecnológico, modernización y ciberseguridad estratégica.";
+
+const domains = [
+  {
+    title: "Continuidad operacional",
+    body: "Evaluación de dependencias, resiliencia, escenarios de interrupción y criterios de recuperación.",
+  },
+  {
+    title: "Arquitectura tecnológica",
+    body: "Diseño y revisión de estructuras que sostienen plataformas críticas, integraciones y decisiones de evolución.",
+  },
+  {
+    title: "Integración y APIs",
+    body: "Ordenamiento de capas de integración, exposición controlada de servicios y trazabilidad entre sistemas.",
+  },
+  {
+    title: "Gobierno tecnológico",
+    body: "Definición de criterios, responsabilidades y mecanismos de control para operar con claridad.",
+  },
+  {
+    title: "Modernización tecnológica",
+    body: "Evolución de plataformas sin comprometer continuidad ni perder control sobre dependencias existentes.",
+  },
+  {
+    title: "Ciberseguridad estratégica",
+    body: "Protección de decisiones, arquitectura y exposición técnica desde una visión de riesgo operacional.",
+  },
+];
+
+const environments = [
+  {
+    title: "Plataformas críticas",
+    body: "Sistemas cuyo impacto operacional exige disponibilidad, trazabilidad y decisiones bien fundamentadas.",
+  },
+  {
+    title: "Entornos regulados",
+    body: "Organizaciones donde control, evidencia, responsabilidad y continuidad forman parte de la operación.",
+  },
+  {
+    title: "Sistemas institucionales",
+    body: "Arquitecturas donde múltiples actores, datos y procesos deben operar con consistencia.",
+  },
+  {
+    title: "Operaciones distribuidas",
+    body: "Contextos con dependencias entre áreas, proveedores, plataformas y canales de atención.",
+  },
+];
+
+const challenges = [
+  {
+    label: "Desafíos",
+    title: "Disponibilidad y resiliencia",
+    items: ["Puntos únicos de falla", "Planes de recuperación insuficientes", "Dependencias no documentadas"],
+  },
+  {
+    label: "Desafíos",
+    title: "Integración compleja",
+    items: ["Sistemas heterogéneos", "APIs sin gobierno", "Flujos críticos sin trazabilidad"],
+  },
+  {
+    label: "Desafíos",
+    title: "Evolución sin interrupción",
+    items: ["Plataformas legacy", "Cambios con alto riesgo", "Arquitecturas difíciles de escalar"],
+  },
+];
 ---
 
-<PageLayout
-  title="Ámbitos | Critical API Services"
-  heading="Ámbitos de intervención"
-  lead="Tres focos de acompañamiento donde el criterio técnico y la reserva son determinantes."
->
-  <div class="stack">
+<BaseLayout title={title} description={description}>
+  <InternalHero
+    eyebrow="Dónde intervenimos"
+    title="Ámbitos de intervención"
+    lead="Intervenimos en entornos donde la tecnología sostiene procesos esenciales y la continuidad operacional no admite improvisación."
+    metricLabel="Ámbitos críticos"
+    metricValue="Arquitectura, integración y continuidad"
+    variant="systems"
+  />
 
-<section class="surface">
-  <h2>Integración institucional</h2>
-  <p>
-    Evaluación y estructuración de capas de integración que articulan sistemas internos y relaciones interinstitucionales en contextos de alta criticidad.
-  </p>
-</section>
+  <PageIntro paragraphs={[
+    "Nuestros ámbitos de intervención combinan arquitectura, operación, gobierno y seguridad. No se tratan como frentes aislados: en entornos críticos, cada decisión afecta al sistema completo.",
+    "El foco está en ordenar problemas complejos, identificar riesgos reales y construir rutas de intervención que protejan continuidad mientras la organización evoluciona.",
+  ]} />
 
-<section class="surface">
-  <h2>Intercambio de información sensible</h2>
-  <p>
-    Acompañamiento técnico en plataformas de mensajería y flujos regulatorios donde la trazabilidad y la consistencia operativa son esenciales.
-  </p>
-</section>
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Ámbitos principales"
+        title="Capacidades aplicadas a entornos críticos"
+      />
+      <CapabilityGrid items={domains} />
+    </div>
+  </section>
 
-<section class="surface">
-  <h2>Gobernanza técnica</h2>
-<p>
-  Definición de criterios y arquitectura del ciclo de vida de servicios de integración crítica en entornos institucionales.
-</p>
-</section>
+  <section class="internal-section">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Tipos de desafíos"
+        title="Problemas que requieren criterio técnico y mirada operacional"
+      />
+      <CapabilityGrid items={challenges} />
+    </div>
+  </section>
 
-  </div>
-</PageLayout>
+  <section class="internal-section internal-section--soft">
+    <div class="internal-wrap">
+      <SectionHeader
+        eyebrow="Entornos"
+        title="Dónde aportamos valor"
+      />
+      <SectorGrid items={environments} />
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
