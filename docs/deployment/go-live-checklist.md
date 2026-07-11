@@ -31,7 +31,7 @@ npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key
 Con remitente explícito:
 
 ```bash
-npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND_FROM_EMAIL="Critical API Services <no-reply@criticalapiservices.com>"
+npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND_FROM_EMAIL="Critical API Services <no-reply@mail.criticalapiservices.com>"
 ```
 
 ## Variables necesarias
@@ -39,10 +39,7 @@ npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND
 En Cloudflare Pages -> proyecto -> Settings -> Environment variables:
 
 - `RESEND_API_KEY`: API key secreta de Resend.
-
-Opcional:
-
-- `RESEND_FROM_EMAIL`: `Critical API Services <no-reply@criticalapiservices.com>`.
+- `RESEND_FROM_EMAIL`: `Critical API Services <no-reply@mail.criticalapiservices.com>`.
 
 Configurar en:
 
@@ -54,8 +51,8 @@ Configurar en:
 - Proton Mail sigue siendo el buzón receptor corporativo.
 - Resend se usa solo como proveedor transaccional de salida para el formulario.
 - Destinatario final: `contacto@criticalapiservices.com`.
-- Verificar dominio `criticalapiservices.com` en Resend antes de usar `no-reply@criticalapiservices.com`.
-- Publicar SPF/DKIM solicitados por Resend en Cloudflare DNS.
+- Dominio de envío verificado en Resend: `mail.criticalapiservices.com`.
+- Mantener publicados SPF/DKIM solicitados por Resend en Cloudflare DNS.
 - No configurar correo para dominios secundarios salvo instrucción posterior.
 
 ## Pasos de deploy

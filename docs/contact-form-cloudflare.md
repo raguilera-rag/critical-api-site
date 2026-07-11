@@ -13,28 +13,23 @@ Configurar en Cloudflare Pages:
 Variables requeridas:
 
 - `RESEND_API_KEY`: API key secreta de Resend.
+- `RESEND_FROM_EMAIL`: remitente verificado usado por Resend.
 
-Variable opcional:
-
-- `RESEND_FROM_EMAIL`: remitente usado por Resend.
-
-Valor recomendado cuando el dominio esté verificado en Resend:
+Valor operativo esperado:
 
 ```txt
-Critical API Services <no-reply@criticalapiservices.com>
-```
-
-Fallback temporal si el dominio todavía no está verificado en Resend:
-
-```txt
-Critical API Services <onboarding@resend.dev>
+Critical API Services <no-reply@mail.criticalapiservices.com>
 ```
 
 Aplicar las variables en `Production` y también en `Preview` si se desea probar despliegues de vista previa.
 
 ## Resend y DNS
 
-Para usar `no-reply@criticalapiservices.com` como remitente, verificar el dominio en Resend y publicar los registros DNS indicados por Resend, normalmente SPF/DKIM. Proton Mail puede seguir recibiendo en `contacto@criticalapiservices.com`; Resend solo actúa como proveedor transaccional de salida del formulario.
+Resend está configurado como proveedor transaccional de salida para el formulario. El dominio de envío verificado es `mail.criticalapiservices.com` y el remitente se obtiene exclusivamente desde `RESEND_FROM_EMAIL`.
+
+El destinatario final es `contacto@criticalapiservices.com`, alojado en Proton Mail. El encabezado `Reply-To` utiliza el email ingresado por el visitante, por lo que al responder desde Proton se responde directamente a la persona que completó el formulario.
+
+No se debe usar un remitente provisional en producción ni dejar remitentes alternativos en el código.
 
 ## QA recomendado
 
@@ -45,10 +40,10 @@ Para usar `no-reply@criticalapiservices.com` como remitente, verificar el domini
 npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key
 ```
 
-Con remitente temporal:
+Con remitente verificado:
 
 ```bash
-npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND_FROM_EMAIL="Critical API Services <onboarding@resend.dev>"
+npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND_FROM_EMAIL="Critical API Services <no-reply@mail.criticalapiservices.com>"
 ```
 
 3. En Cloudflare Preview o Production, probar `/contacto`.
@@ -60,4 +55,4 @@ npx wrangler pages dev dist --binding RESEND_API_KEY=tu_api_key --binding RESEND
 
 ## Anti-spam
 
-Actualmente existe un honeypot oculto llamado `website` y validación de tiempo de envío. El endpoint deja un comentario preparado para agregar Cloudflare Turnstile más adelante.
+Actualmente existe un honeypot oculto llamado `website` y validación de tiempo de envío. Cloudflare Turnstile queda como mejora posterior, fuera del cierre actual de producción.

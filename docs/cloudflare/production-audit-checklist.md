@@ -75,21 +75,22 @@ Validar:
 Validar existencia de:
 
 - `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
 
 En:
 
 - Production.
 - Preview si se necesita probar formulario antes de publicar.
 
-Opcional:
+Valor operativo previsto de `RESEND_FROM_EMAIL`:
 
-- `RESEND_FROM_EMAIL`
+- `Critical API Services <no-reply@mail.criticalapiservices.com>`
 
 Notas:
 
 - No imprimir valores de secretos.
 - No copiar API keys en tickets, capturas ni documentación.
-- Si el dominio no está verificado en Resend, no usar fallback en producción sin confirmación.
+- El dominio de envío verificado en Resend es `mail.criticalapiservices.com`.
 
 ## 7. Seguridad
 

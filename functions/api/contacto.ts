@@ -1,3 +1,5 @@
+import { buildContactEmailHtml, buildContactEmailText } from "../_lib/contact-email";
+
 type Env = {
   RESEND_API_KEY?: string;
   RESEND_FROM_EMAIL?: string;
@@ -34,14 +36,6 @@ const ERROR_MESSAGE =
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const escapeHtml = (value: string) =>
-  value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-
 const normalize = (value: unknown, maxLength: number) => {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, maxLength);
@@ -53,28 +47,20 @@ const json = (body: unknown, status = 200) =>
     headers: JSON_HEADERS,
   });
 
-const buildEmailHtml = (fields: Record<string, string>) => `
-  <div style="font-family:Arial,sans-serif;color:#0c1724;line-height:1.55">
-    <h1 style="font-size:20px;margin:0 0 16px">Nueva solicitud desde criticalapiservices.com</h1>
-    <table style="border-collapse:collapse;width:100%;max-width:680px">
-      ${Object.entries(fields)
-        .map(
-          ([label, value]) => `
-            <tr>
-              <td style="border:1px solid #d9e2ec;padding:10px 12px;font-weight:700;background:#f4f7fa;width:190px">${escapeHtml(label)}</td>
-              <td style="border:1px solid #d9e2ec;padding:10px 12px">${escapeHtml(value || "No informado")}</td>
-            </tr>
-          `,
-        )
-        .join("")}
-    </table>
-  </div>
-`;
+const formatChileDate = (date: Date) =>
+  new Intl.DateTimeFormat("es-CL", {
+    dateStyle: "full",
+    timeStyle: "medium",
+    timeZone: "America/Santiago",
+  }).format(date);
 
-const buildEmailText = (fields: Record<string, string>) =>
-  Object.entries(fields)
-    .map(([label, value]) => `${label}: ${value || "No informado"}`)
-    .join("\n");
+const createRequestId = () => {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+
+  return `cas-${Date.now().toString(36)}`;
+};
 
 export const onRequest = async (context: {
   request: Request;
@@ -88,6 +74,10 @@ export const onRequest = async (context: {
 
   try {
     if (!env.RESEND_API_KEY) {
+      return json({ ok: false, message: ERROR_MESSAGE }, 500);
+    }
+
+    if (!env.RESEND_FROM_EMAIL) {
       return json({ ok: false, message: ERROR_MESSAGE }, 500);
     }
 
@@ -130,24 +120,26 @@ export const onRequest = async (context: {
       return json({ ok: false, message: ERROR_MESSAGE }, 400);
     }
 
-    const submittedAt = new Date().toISOString();
-    const fields = {
-      Nombre: nombre,
-      Empresa: empresa,
-      Cargo: cargo,
-      Email: email,
-      "Teléfono": telefono,
-      "Tipo de necesidad": tipoNecesidad,
-      Mensaje: mensaje,
-      "Fecha/hora": submittedAt,
-      Origen: "criticalapiservices.com",
+    const submittedAt = new Date();
+    const originDomain = new URL(request.url).hostname;
+    const contactEmail = {
+      requestId: createRequestId(),
+      submittedAtChile: formatChileDate(submittedAt),
+      origin: originDomain,
+      ipAddress: request.headers.get("cf-connecting-ip") || "",
+      userAgent: request.headers.get("user-agent") || "",
+      fields: {
+        nombre,
+        empresa,
+        cargo,
+        email,
+        telefono,
+        tipoNecesidad,
+        mensaje,
+      },
     };
 
-    // TODO: Integrar Cloudflare Turnstile antes de campañas o tráfico pagado.
-    // Si el dominio no está verificado en Resend, configurar temporalmente
-    // RESEND_FROM_EMAIL="Critical API Services <onboarding@resend.dev>" en Cloudflare.
-    const from =
-      env.RESEND_FROM_EMAIL || "Critical API Services <no-reply@criticalapiservices.com>";
+    const from = env.RESEND_FROM_EMAIL;
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -160,12 +152,15 @@ export const onRequest = async (context: {
         to: ["contacto@criticalapiservices.com"],
         reply_to: email,
         subject: "Nueva solicitud desde criticalapiservices.com",
-        html: buildEmailHtml(fields),
-        text: buildEmailText(fields),
+        html: buildContactEmailHtml(contactEmail),
+        text: buildContactEmailText(contactEmail),
       }),
     });
 
     if (!resendResponse.ok) {
+      console.error("RESEND ERROR:", {
+        status: resendResponse.status,
+      });
       return json({ ok: false, message: ERROR_MESSAGE }, 502);
     }
 
