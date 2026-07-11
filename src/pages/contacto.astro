@@ -16,9 +16,11 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
     metricLabel="Canal"
     metricValue="Coordinación profesional"
     variant="contact"
+    ctaLabel="Ir al formulario"
+    ctaTarget="#formulario-contacto"
   />
 
-  <section class="internal-section">
+  <section class="internal-section" id="formulario-contacto">
     <div class="internal-wrap contact-panel">
       <div class="content-card">
         <SectionHeader
@@ -99,6 +101,12 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
     const status = document.querySelector("[data-contact-status]");
 
     if (form && status) {
+      const heroCta = document.querySelector("[data-scroll-target]");
+      heroCta?.addEventListener("click", () => {
+        const target = document.querySelector(heroCta.dataset.scrollTarget);
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
       const startedAt = form.querySelector('input[name="formStartedAt"]');
       if (startedAt) startedAt.value = String(Date.now());
 

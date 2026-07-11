@@ -8,6 +8,8 @@ const {
   metricLabel = "Continuidad operacional",
   metricValue = "Criterio técnico",
   variant = "strategy",
+  ctaLabel,
+  ctaTarget,
   features = [
     {
       title: "Qué encontrarás",
@@ -50,6 +52,12 @@ const icons = {
         {eyebrow && <p class="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
         {lead && <p>{lead}</p>}
+        {ctaLabel && ctaTarget && (
+          <button class="internal-hero__cta" type="button" data-scroll-target={ctaTarget}>
+            <span>{ctaLabel}</span>
+            <span aria-hidden="true">↓</span>
+          </button>
+        )}
       </div>
     </div>
   </div>
