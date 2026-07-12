@@ -68,7 +68,7 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
             Mensaje
             <textarea name="mensaje" minlength="20" maxlength="3000" required placeholder="Describe el desafío, contexto o ventana de decisión."></textarea>
           </label>
-          <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+          <button class="btn btn--primary" type="submit" disabled>Enviar solicitud</button>
           <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -109,18 +109,42 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
 
       const startedAt = form.querySelector('input[name="formStartedAt"]');
       if (startedAt) startedAt.value = String(Date.now());
+      const button = form.querySelector('button[type="submit"]');
 
       const setStatus = (message, type) => {
         status.textContent = message;
         status.dataset.state = type;
       };
 
+      const isFieldReady = (field) => {
+        const value = field.value.trim();
+        const minLength = Number(field.getAttribute("minlength") || 0);
+        const maxLength = Number(field.getAttribute("maxlength") || 0);
+
+        if (field.required && !value) return false;
+        if (minLength && value.length < minLength) return false;
+        if (maxLength && value.length > maxLength) return false;
+
+        return field.validity.valid;
+      };
+
+      const updateSubmitState = () => {
+        const requiredFields = Array.from(form.querySelectorAll("[required]"));
+        button.disabled = !requiredFields.every(isFieldReady);
+      };
+
+      form.addEventListener("input", updateSubmitState);
+      form.addEventListener("change", updateSubmitState);
+      updateSubmitState();
+
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        if (!form.reportValidity()) return;
+        if (!form.reportValidity()) {
+          updateSubmitState();
+          return;
+        }
 
-        const button = form.querySelector('button[type="submit"]');
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData.entries());
 
@@ -144,6 +168,7 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
             setStatus(result.message || "Solicitud enviada correctamente.", "success");
             form.reset();
             if (startedAt) startedAt.value = String(Date.now());
+            updateSubmitState();
             return;
           }
 
@@ -158,8 +183,8 @@ const description = "Conversemos sobre tu próximo desafío tecnológico. Contac
             "error",
           );
         } finally {
-          button.disabled = false;
           button.textContent = "Enviar solicitud";
+          updateSubmitState();
         }
       });
     }

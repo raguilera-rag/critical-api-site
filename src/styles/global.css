@@ -1347,10 +1347,20 @@ main > section[id]{
   justify-self:start;
 }
 
+.contact-form button.btn--primary:not(:disabled){
+  background:linear-gradient(135deg,#04152b,#155da0);
+  border-color:#2f75b6;
+  box-shadow:0 14px 30px rgba(4,21,43,.18);
+}
+
 .contact-form button:disabled{
   cursor:not-allowed;
-  opacity:.62;
+  color:rgba(255,255,255,.86);
+  background:#9bb8d4;
+  border-color:#9bb8d4;
+  opacity:.72;
   transform:none;
+  box-shadow:none;
 }
 
 .contact-form__status{
