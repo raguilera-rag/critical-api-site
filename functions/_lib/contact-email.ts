@@ -25,8 +25,6 @@ const escapeHtml = (value: string) =>
 
 const display = (value: string) => escapeHtml(value || "No informado");
 
-const emailLogoUrl = "https://criticalapiservices.com/contact-email-logo.png";
-
 const fieldRow = (label: string, value: string) => `
   <tr>
     <td style="padding:0 0 10px 0;">
@@ -67,7 +65,17 @@ export const buildContactEmailHtml = (data: ContactEmailData) => `
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                   <tr>
                     <td style="vertical-align:middle;">
-                      <img src="${emailLogoUrl}" width="220" height="59" alt="Critical API Services" style="display:block;width:220px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;">
+                      <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                        <tr>
+                          <td width="48" height="48" align="center" style="width:48px;height:48px;border:1px solid #2d6fd3;background:#062244;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;letter-spacing:.08em;line-height:48px;">
+                            CAS
+                          </td>
+                          <td style="padding-left:16px;font-family:Arial,Helvetica,sans-serif;">
+                            <div style="color:#ffffff;font-size:17px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.2;">Critical</div>
+                            <div style="padding-top:4px;color:#6aa2d5;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;line-height:1.2;">API Services</div>
+                          </td>
+                        </tr>
+                      </table>
                     </td>
                   </tr>
                   <tr>
