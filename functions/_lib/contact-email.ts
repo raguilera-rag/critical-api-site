@@ -25,6 +25,8 @@ const escapeHtml = (value: string) =>
 
 const display = (value: string) => escapeHtml(value || "No informado");
 
+const emailLogoUrl = "https://criticalapiservices.com/contact-email-logo.png";
+
 const fieldRow = (label: string, value: string) => `
   <tr>
     <td style="padding:0 0 10px 0;">
@@ -65,7 +67,7 @@ export const buildContactEmailHtml = (data: ContactEmailData) => `
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
                   <tr>
                     <td style="vertical-align:middle;">
-                      <img src="https://criticalapiservices.com/critical-logo-light_on_dark.png" width="210" alt="Critical API Services" style="display:block;width:210px;max-width:100%;height:auto;border:0;">
+                      <img src="${emailLogoUrl}" width="220" height="59" alt="Critical API Services" style="display:block;width:220px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;">
                     </td>
                   </tr>
                   <tr>
