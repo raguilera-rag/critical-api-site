@@ -93,7 +93,7 @@ Validar:
 - Canonical correcto.
 - Open Graph básico.
 - `robots.txt` responde 200.
-- `sitemap.xml` responde 200.
+- `sitemap-index.xml` responde 200 y referencia `sitemap-0.xml`.
 - No hay soft 404.
 
 ## Validación de formulario

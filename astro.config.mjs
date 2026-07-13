@@ -9,7 +9,6 @@ export default defineConfig({
     sitemap({
       filter: (page) => ![
         'https://criticalapiservices.com/404/',
-        'https://criticalapiservices.com/sitemap.xml',
       ].includes(page)
     })
   ]

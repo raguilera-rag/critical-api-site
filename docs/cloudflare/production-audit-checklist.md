@@ -55,7 +55,7 @@ Validar:
 - Sin redirecciones temporales innecesarias.
 - Sin loops.
 - Sin conflictos entre Page Rules antiguas y Redirect Rules actuales.
-- Reglas de marca no afectan `/robots.txt`, `/sitemap.xml` ni `/api/contacto`.
+- Reglas de marca no afectan `/robots.txt`, `/sitemap-index.xml`, `/sitemap-0.xml` ni `/api/contacto`.
 
 ## 5. Cloudflare Pages
 
@@ -99,7 +99,7 @@ Validar:
 - WAF / Security Rules activas y razonables.
 - Bot Fight Mode según política actual.
 - Managed Challenge no bloquea usuarios legítimos.
-- Reglas no bloquean `/sitemap.xml`.
+- Reglas no bloquean `/sitemap-index.xml` ni `/sitemap-0.xml`.
 - Reglas no bloquean `/robots.txt`.
 - Reglas no bloquean `POST /api/contacto`.
 - Reglas no bloquean Googlebot.
@@ -121,7 +121,7 @@ Validar:
 Validar en producción:
 
 - `https://criticalapiservices.com/robots.txt` responde 200.
-- `https://criticalapiservices.com/sitemap.xml` responde 200.
+- `https://criticalapiservices.com/sitemap-index.xml` responde 200 y referencia `https://criticalapiservices.com/sitemap-0.xml`.
 - Sitemap no bloqueado por WAF.
 - Páginas principales indexables.
 - Canonical correcto hacia `https://criticalapiservices.com`.
