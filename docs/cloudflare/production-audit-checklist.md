@@ -122,6 +122,7 @@ Validar en producción:
 
 - `https://criticalapiservices.com/robots.txt` responde 200.
 - `https://criticalapiservices.com/sitemap-index.xml` responde 200 y referencia `https://criticalapiservices.com/sitemap-0.xml`.
+- `https://criticalapiservices.com/sitemap.xml` redirige a `https://criticalapiservices.com/sitemap-index.xml`.
 - Sitemap no bloqueado por WAF.
 - Páginas principales indexables.
 - Canonical correcto hacia `https://criticalapiservices.com`.
